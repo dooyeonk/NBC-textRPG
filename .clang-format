@@ -16,9 +16,6 @@ SortIncludes: false
 BreakBeforeBraces: Allman    # 중괄호({)를 다음 줄에 배치 (C++ 관습)
 AllowShortFunctionsOnASingleLine: None # 짧은 함수도 한 줄로 쓰지 않음
 
-# 4. 불필요한 공백 제거 (Remove unnecessary imports와 유사한 효과)
-TrimTrailingWhitespace: true
-
 # 5. 포인터 위치 설정 (int* ptr 형식)
 PointerAlignment: Left
 
