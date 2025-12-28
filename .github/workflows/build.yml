@@ -1,0 +1,19 @@
+﻿name: Build-Check
+
+on:
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  build_test:
+    name: "Build Test"
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Run MSBuild
+      run: msbuild NBC-textRPG.sln /p:Configuration=Release /p:Platform=x64
