@@ -17,3 +17,11 @@ jobs:
 
     - name: Run MSBuild
       run: msbuild NBC-textRPG.sln /p:Configuration=Release /p:Platform=x64
+
+    - name: Linter (clang-format) check
+      uses: DoozyX/clang-format-lint-action@v0.17
+      with:
+        source: '.'
+        extensions: 'cpp,h,hpp'
+        clangFormatVersion: 16
+        style: file # 프로젝트 루트의 .clang-format 파일을 사용함

@@ -1,0 +1,27 @@
+---
+# Visual Studio의 C++ Formatting 설정을 반영한 파일
+Language: Cpp
+BasedOnStyle: Microsoft
+
+# 1. Format document (들여쓰기 및 공백 설정)
+IndentWidth: 4
+ColumnLimit: 120
+UseTab: Never              # 공백(Space) 사용
+AccessModifierOffset: -4   # public, private을 왼쪽으로 붙임 (VS 기본)
+
+# 2. Sort #include directives (인클루드 정렬)
+SortIncludes: false
+
+# 3. 중괄호 및 서식 설정 (Microsoft 스타일 기반)
+BreakBeforeBraces: Allman    # 중괄호({)를 다음 줄에 배치 (C++ 관습)
+AllowShortFunctionsOnASingleLine: None # 짧은 함수도 한 줄로 쓰지 않음
+
+# 4. 불필요한 공백 제거 (Remove unnecessary imports와 유사한 효과)
+TrimTrailingWhitespace: true
+
+# 5. 포인터 위치 설정 (int* ptr 형식)
+PointerAlignment: Left
+
+# 6. 헤더 파일 그룹화 (Apply file header preferences 참고용)
+# IncludeBlocks: Regroup
+---
