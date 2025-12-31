@@ -131,10 +131,10 @@ void GameManager::Ending()
 {
     system("cls");
 
-    // 보스 처치 후 정적...
+    // 보스 처치 후 정적
     cout << "\n\n";
     cout << "보스 [Memory_Leak]가 비명을 지르며 소멸합니다..." << endl;
-    this_thread::sleep_for(chrono::seconds(2)); // 2초 대기 (긴장감)
+    this_thread::sleep_for(chrono::seconds(2)); // 2초 대기
 
     // 텍스트 연출 (한 줄씩 천천히)
     string endingLines[] = {"...", "시스템의 모든 오류가 수정되었습니다.", "코드 컴파일 중...", "Linking...",
@@ -143,7 +143,7 @@ void GameManager::Ending()
     for (const string& line : endingLines)
     {
         cout << ">> " << line << endl;
-        this_thread::sleep_for(chrono::milliseconds(800)); // 0.8초 딜레이
+        this_thread::sleep_for(chrono::milliseconds(800));
     }
 
     // ASCII 아트 암거나 
@@ -163,15 +163,14 @@ void GameManager::Ending()
     cout << "   축하합니다! 위대한 개발자로 거듭나셨습니다!" << endl;
     cout << "=============================================" << endl;
 
-    // 4. 엔딩 크레딧
-    cout << "\n[ Made by Team 6 ]" << endl;
+    // 엔딩 크레딧
+    cout << "\n[ Made by Team 3 ]" << endl;
     this_thread::sleep_for(chrono::seconds(1));
-    cout << " - Main Director : [본인 이름]" << endl;
-    cout << " - Battle System : [팀원 A]" << endl;
-    cout << " - Character Dev : [팀원 B]" << endl;
-    cout << " - Monster Design: [팀원 C]" << endl;
-    cout << " - Item Logic    : [팀원 D]" << endl;
-    cout << " - UI / Logger   : [팀원 E]" << endl;
+    cout << " - GameManager   : [팀원 A]" << endl;
+    cout << " - Battle System : [팀원 B]" << endl;
+    cout << " - Character     : [팀원 C]" << endl;
+    cout << " - Monster       : [팀원 D]" << endl;
+    cout << " - Item          : [팀원 E]" << endl;
 
     cout << "\n\nPress any key to exit...";
     int temp;
