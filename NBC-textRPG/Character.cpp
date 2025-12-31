@@ -86,10 +86,10 @@ void Character::addItem(Item* newItem)
     inventory.push_back(InventoryItem(newItem));
 }
 
-void Character::setHp(int amount)
+void Character::setHp(int hp)
 {
-    // 0과 maxHealthPoint 사이로 값 제한
-    hp = std::max(0, std::min(amount, maxHp));
+    // 0과 maxHp 사이로 값 제한
+    hp = std::max(0, std::min(hp, maxHp));
 }
 
 void Character::displayStatus() const

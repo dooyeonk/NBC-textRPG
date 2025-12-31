@@ -16,18 +16,12 @@ struct InventoryItem
     }
 };
 
-struct Stats
-{
-    int hp = 0;
-    int attack = 0;
-};
-
 class Character
 {
 public:
     static Character* instance;
 
-    static Character* getInstance(std::string name = "Student", int hp = 200, int atk = 30);
+    static Character* getInstance(std::string name = "Student", int hp = 200, int attackPower = 30);
     static void destroy();
 
     bool isDead() const;
@@ -38,7 +32,7 @@ public:
     void addItem(Item* newItem);
     void reduceItem(const std::string& itemName);
 
-    void setHp(int amount);
+    void setHp(int hp);
 
     void displayStatus() const;
 
