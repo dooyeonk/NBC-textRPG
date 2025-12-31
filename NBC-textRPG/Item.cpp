@@ -1,35 +1,71 @@
 #include "Item.h"
 #include <string>
-using namespace std;
 
-Item::Item() : use(false)  // 아이템 클래스의 생성자. use의 bool을 false로
+Item::Item() : price(0)
 {
 }
 
-Item::Item(const string& itemName, bool itemUse) : name(itemName), use(itemUse)
+Item::Item(const std::string& itemName, int itemPrice) : name(itemName), price(itemPrice)
 {
 }
 
-Item::~Item()
-{
-}
 
-string Item::getItemName() // 타입을 제일 앞으로
+std::string Item::getItemName()
 {
     return name;
 }
 
-bool Item::getUse()
+int Item::getItemPrice()
 {
-    return use;
+    return price;
 }
 
-void Item::setItemName(const string& itemName)
+void Item::setItemName(const std::string& itemName)
 {
     name = itemName;
 }
 
-void Item::setUse(bool itemUse)
+void Item::setItemPrice(int itemPrice)
 {
-    use = itemUse;
+    price = itemPrice;
 }
+HealthPotion::HealthPotion() : heal(50)
+{
+}
+
+HealthPotion::HealthPotion(const std::string& itemName, int itemPrice, int healing)
+    : Item(itemName, itemPrice), heal(healing)
+{
+}
+
+HealthPotion::~HealthPotion()
+{
+}
+
+ItemEffect HealthPotion::getEffect()
+{
+    ItemEffect effect;
+    effect.hp = heal;
+    return effect;
+}
+
+AttackBoost::AttackBoost() : attackUp(10)
+{
+}
+
+AttackBoost::AttackBoost(const std::string& itemName, int itemPrice, int atkUp)
+    : Item(itemName, itemPrice), attackUp(atkUp)
+{
+}
+
+AttackBoost::~AttackBoost()
+{
+}
+
+ItemEffect AttackBoost::getEffect()
+{
+    ItemEffect effect;
+    effect.attackPower = attackUp;
+    return effect;
+}
+

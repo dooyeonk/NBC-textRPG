@@ -1,24 +1,57 @@
 #pragma once
 #include <string>
 
-class Item // 기본 클래스
+struct ItemEffect
 {
-private: // 멤버 변수
+    int hp = 0;
+    int attackPower = 0;
+};
+
+class Item
+{
+private:
     std::string name;
-    bool use;
+    int price;
 
-public: // 멤버 함수
-    Item(); // 생성자
-    Item(const std::string& itemName, bool itemUse);
-    ~Item(); // 소멸자
+public:
+    Item();
+    Item(const std::string& itemName, int itemPrice);
+    virtual ~Item() = default;
+
+    virtual ItemEffect getEffect() = 0;
 
 
-    std::string getItemName(); // getter 
-    bool getUse();
+    std::string getItemName();
+    int getItemPrice();
 
-    void setItemName(const std::string& itemName); // setter
-    void setUse(bool itemUse);
+    void setItemName(const std::string& itemName);
+    void setItemPrice(int itmePrice);
 
 };
+
+class HealthPotion : public Item
+{
+private:
+    int heal;
+
+public:
+    HealthPotion();
+    HealthPotion(const std::string& itemName, int itemPrice, int healing);
+    ~HealthPotion();
+
+    ItemEffect getEffect();
+};
+
+class AttackBoost : public Item
+{
+private:
+    int attackUp;
+
+public:
+    AttackBoost();
+    AttackBoost(const std::string& itemName, int itemPrice, int atkUp);
+    ~AttackBoost();
+
+    ItemEffect getEffect();
 
 };
