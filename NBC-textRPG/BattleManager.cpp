@@ -1,9 +1,10 @@
-#include "BattleManager.h"
-// #include "MonsterFactory.h"
-#include "Monster.h" // TODO: factory pattern
-#include <iostream>
-#include <cstdlib> // rand(), srand()를 위해 필요
 #include <algorithm>
+#include <cstdlib> // rand(), srand()를 위해 필요
+#include <iostream>
+
+#include "BattleManager.h"
+#include "Monster.h" // TODO: factory pattern
+// #include "MonsterFactory.h"
 
 BattleReport BattleManager::battle(Character& character)
 {
