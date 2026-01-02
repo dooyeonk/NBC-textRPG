@@ -1,6 +1,6 @@
 #pragma once
-#include <string>
 #include <iostream>
+#include <string>
 
 class Monster
 {
@@ -17,6 +17,7 @@ public:
     int getHealthPoint();
     int getAttack();
     bool isDead();
+    std::string getName();
     virtual ~Monster()
     {
     }

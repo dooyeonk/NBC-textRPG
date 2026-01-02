@@ -16,6 +16,10 @@ int Monster::getAttack()
 {
     return attack;
 }
+std::string Monster::getName()
+{
+    return name;
+}
 bool Monster::isDead()
 {
     if (healthPoint == 0)
