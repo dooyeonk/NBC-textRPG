@@ -1,7 +1,9 @@
 #include "Shop.h"
 #include "Item.h"
+#include "Character.h"
 #include <string>
 #include <vector>
+#include <algorithm>
 #include <iostream>
 
 Shop::Shop()
@@ -16,24 +18,28 @@ void Shop::addItem(Item* item)
     items.push_back(item);
 }
 
-void Shop::ShowItem()
+void Shop::showItem()
 {
     for (size_t i = 0; i < items.size(); i++)
     {
-        std::cout << i << ". " << items[i]->getName() << items[i]->getPrice() << "골드" << std::endl;
+        std::cout << i << ". " << items[i]->getName() << items[i]->getPrice() << "Gold" << std::endl;
     }
 }
 
-Item* Shop::buyItem(int buy)
+Item* Shop::buyItem(int itemIndex)
 {
-    if (buy < 0 || items.size() < 0)
+    if (itemIndex < 0 || items.size() < itemIndex)
     {
-        return;
+        return nullptr;
     }
+    Item* boughtItem = items[itemIndex];
+    items.erase(items.begin() + itemIndex);
 
+    return boughtItem;
 }
 
-Item* Shop::sellItem(int sell)
-{
 
+Item* Shop::sellItem(int itemIndex)
+{
+    return 0;//추가 필요
 }

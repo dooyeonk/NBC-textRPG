@@ -1,5 +1,5 @@
 #pragma once
-#include "item.h"
+#include "Item.h"
 #include <vector>
 #include <string>
 class Shop
@@ -13,9 +13,9 @@ public:
 
     void addItem(Item* item);
 
-    void ShowItem();
+    void showItem();
 
-    Item* buyItem(int buy);
+    Item* buyItem(int itemIndex);
 
-    Item* sellItem(int sell);
+    Item* sellItem(int itemIndex);
 };
