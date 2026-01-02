@@ -1,7 +1,7 @@
 #include "Item.h"
 #include <string>
 
-Item::Item() : price(0)
+Item::Item()
 {
 }
 
@@ -10,22 +10,22 @@ Item::Item(const std::string& itemName, int itemPrice) : name(itemName), price(i
 }
 
 
-std::string Item::getItemName()
+std::string Item::getName()
 {
     return name;
 }
 
-int Item::getItemPrice()
+int Item::getPrice()
 {
     return price;
 }
 
-void Item::setItemName(const std::string& itemName)
+void Item::setName(const std::string& itemName)
 {
     name = itemName;
 }
 
-void Item::setItemPrice(int itemPrice)
+void Item::setPrice(int itemPrice = 0)
 {
     price = itemPrice;
 }

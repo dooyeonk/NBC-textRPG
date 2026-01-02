@@ -21,11 +21,11 @@ public:
     virtual ItemEffect getEffect() = 0;
 
 
-    std::string getItemName();
-    int getItemPrice();
+    std::string getName();
+    int getPrice();
 
-    void setItemName(const std::string& itemName);
-    void setItemPrice(int itmePrice);
+    void setName(const std::string& itemName);
+    void setPrice(int itmePrice);
 
 };
 
