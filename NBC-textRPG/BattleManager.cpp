@@ -66,7 +66,9 @@ void BattleManager::executePlayerTurn(Character& character, Monster& monster, in
     }
 
     int finalDamage = character.getAttackPower() + attackBonus;
-    monster.setHp(monster.getHp() - finalDamage);
+    // TODO: 함수명 수정
+    // monster.setHp(monster.getHp() - finalDamage);
+    monster.hpDamaged(finalDamage);
 
     std::cout << ">> " << character.getName() << "의 공격! " << monster.getName() << "에게 " << finalDamage
               << "의 피해를 주었습니다." << std::endl;
@@ -80,7 +82,7 @@ bool BattleManager::itemUsed(Character& character, int& attackBonus)
         // 인벤토리 인덱스 중 하나를 랜덤하게 선택
         int randomIndex = rand() % inventory.size();
         const auto item = inventory[randomIndex].item;
-        ItemEffect effect = item->getItemEffect();
+        ItemEffect effect = item->getEffect();
 
         std::cout << "[아이템(" << item->getName() << ") 사용]: ";
 
@@ -107,9 +109,10 @@ bool BattleManager::itemUsed(Character& character, int& attackBonus)
 void BattleManager::executeMonsterTurn(Character& character, Monster& monster)
 {
     std::cout << "\n[" << monster.getName() << "의 차례]" << std::endl;
-    character.setHp(character.getHp() - monster.getAttackPower());
+    // TODO: getAttackPower()
+    character.setHp(character.getHp() - monster.getAttack());
 
-    std::cout << ">> " << monster.getName() << "의 공격! " << character.getName() << "에게 " << monster.getAttackPower()
+    std::cout << ">> " << monster.getName() << "의 공격! " << character.getName() << "에게 " << monster.getAttack()
               << "의 피해를 주었습니다." << std::endl;
 }
 
