@@ -13,7 +13,6 @@ public:
     void run();
 
 private:
-
     // 상점 ㄱㄱ
     void visitShop(Character* player);
 

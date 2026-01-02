@@ -90,7 +90,7 @@ void GameManager::showPostBattleMenu()
         }
         else if (choice == 2)
         {
-            // player->displayInventory(); 
+            player->getInventory();
         }
         else if (choice == 3)
         {
