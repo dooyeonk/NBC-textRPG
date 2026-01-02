@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -131,6 +131,8 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterError.cpp" />
     <ClCompile Include="MonsterGit.cpp" />
+    <ClCompile Include="MonsterAlgorithm.cpp" />
+    <ClCompile Include="MonsterMemory.cpp" />
     <ClCompile Include="MonsterSyntax.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +143,8 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterError.h" />
     <ClInclude Include="MonsterGit.h" />
+    <ClInclude Include="MonsterAlgorithm.h" />
+    <ClInclude Include="MonsterMemory.h" />
     <ClInclude Include="MonsterSyntax.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

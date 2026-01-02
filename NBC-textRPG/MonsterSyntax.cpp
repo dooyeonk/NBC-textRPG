@@ -1,36 +1,39 @@
 #include "MonsterSyntax.h"
-
+#include <cstdlib>
 #include <string>
 
 MonsterSyntax::MonsterSyntax(int characterLevel) : Monster(characterLevel)
 {
+    name = "문법오류";
 }
 
 void MonsterSyntax::hpDamaged(int damage)
-{
-    // TODO: 수정하세요
-}
+    {
+    hp -= damage;
+        if (hp < 0)
+            hp = 0;
+    }
 
 int MonsterSyntax::getHealthPoint()
 {
-    // TODO: 수정하세요
-    return 0;
+
+    return hp;
 }
 
 int MonsterSyntax::getAttack()
 {
     // TODO: 수정하세요
-    return 0;
+    return attackPower;
 }
 
 bool MonsterSyntax::isDead()
 {
-    // TODO: 수정하세요
-    return true;
+    
+    return hp <= 0;
 }
 
 std::string MonsterSyntax::getName()
 {
-    // TODO: 수정하세요
-    return "";
+    
+    return name;
 }
