@@ -9,7 +9,6 @@ Item::Item(const std::string& itemName, int itemPrice) : name(itemName), price(i
 {
 }
 
-
 std::string Item::getName()
 {
     return name;
@@ -68,4 +67,3 @@ ItemEffect AttackBoost::getEffect()
     effect.attackPower = attackUp;
     return effect;
 }
-

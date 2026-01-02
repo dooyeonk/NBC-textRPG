@@ -20,13 +20,11 @@ public:
 
     virtual ItemEffect getEffect() = 0;
 
-
     std::string getName();
     int getPrice();
 
     void setName(const std::string& itemName);
     void setPrice(int itmePrice);
-
 };
 
 class HealthPotion : public Item
@@ -53,5 +51,4 @@ public:
     ~AttackBoost();
 
     ItemEffect getEffect();
-
 };
