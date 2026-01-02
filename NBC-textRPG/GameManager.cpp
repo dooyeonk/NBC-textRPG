@@ -38,7 +38,7 @@ void GameManager::run()
     {
         int currentLevel = player->getLevel();
 
-        BattleReport report;
+        BattleReport report = battleMg->battle(*player);
         bool bVictory = (report.result == BattleResult::VICTORY);
 
         if (bVictory)
@@ -55,7 +55,7 @@ void GameManager::run()
         // 패배 시
         else
         {
-            cout << "Game Over" << endl;
+            showDefeatSans();
             bIsGameOver = true;
         }
     }
@@ -123,6 +123,37 @@ void GameManager::displayInventory()
         }
     }
     cout << "====================" << endl;
+}
+
+void GameManager::showDefeatSans()
+{
+    system("cls"); // 화면 정리
+
+    cout << "\n" << endl;
+    cout << "░░░░░░░▄▄▄▀▀▀▀▀▀▀▀▀▀▀▀▄▄▄░░░░░░░" << endl;
+    cout << "░░░░▄▀▀░░░░░░░░░░░░░░░░░░▀▀▄░░░░" << endl;
+    cout << "░░▄▀░░░░░░░░░░░░░░░░░░░░░░░░▀▄░░" << endl;
+    cout << "░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░█░" << endl;
+    cout << "█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█" << endl;
+    cout << "█░░░▄▄██████▄░░░░░░▄██████▄▄░░░█" << endl;
+    cout << "█░░███▀▀█████░░░░░░██▀▀██████░░█" << endl;
+    cout << "▀▄░███▄▄█████░░▄▄░░██▄▄██████░▄▀" << endl;
+    cout << "░▀▄░░░░░░░▄▀░░▄██▄░░▀▄░░░░░░░▄▀░" << endl;
+    cout << "░▄▀░░░▄░▀▀░░░░████░░░░▀▀░▄░░░▀▄░" << endl;
+    cout << "░█░░▄▄█▀▄▄░░░░░░░░░░░░░▄▄██▄░░█░" << endl;
+    cout << "░▀▄░░░▀▄█░▀▀█▀▀█▀▀▀█▀▀█░█▀░░░▄▀░" << endl;
+    cout << "░░▀▄░░░░▀▀▄▄█░░█░░░█░▄█▀░░░░▄▀░░" << endl;
+    cout << "░░░░▀▄▄░░░░░▀▀▀▀▀▀▀▀▀░░░░▄▄▀░░░░" << endl;
+    cout << "░░░░░░░▀▀▀▄▄▄▄▄▄▄▄▄▄▄▄▀▀▀░░░░░░░" << endl;
+
+    cout << "\n=============================================" << endl;
+    cout << "         (당신은 의지를 잃었다...)" << endl;
+    cout << "=============================================" << endl;
+    cout << "                 GAME OVER                   " << endl;
+
+    cout << "\n계속하려면 아무 키나 누르세요...";
+    string temp;
+    cin >> temp;
 }
 
 void GameManager::ending()
