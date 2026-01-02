@@ -1,7 +1,6 @@
 #include "GameManager.h"
 #include "Character.h"
 #include "BattleManager.h"
-#include "Monster.h"
 #include <iostream>
 #include <thread> // 딜레이 효과를 위해
 #include <chrono> // 딜레이 효과를 위해
@@ -20,6 +19,10 @@ GameManager::~GameManager()
         delete battleMg;
         battleMg = nullptr;
     }
+
+    // 캐릭터 메모리 해제
+    Character::destroy();
+    player = nullptr;
 }
 
 void GameManager::run()

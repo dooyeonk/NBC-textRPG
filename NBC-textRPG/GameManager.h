@@ -1,7 +1,6 @@
 #pragma once
 
 class Character;
-class Monster;
 class BattleManager;
 
 class GameManager
