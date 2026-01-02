@@ -90,7 +90,7 @@ void GameManager::showPostBattleMenu()
         }
         else if (choice == 2)
         {
-            player->getInventory();
+            displayInventory();
         }
         else if (choice == 3)
         {
@@ -102,6 +102,24 @@ void GameManager::showPostBattleMenu()
             cout << "잘못된 입력입니다." << endl;
         }
     }
+}
+
+void GameManager::displayInventory()
+{
+    cout << "\n=== [ 인벤토리 ] ===" << endl;
+    const auto& inventory = player->getInventory();
+    if (inventory.empty())
+    {
+        cout << "(비어있음)" << endl;
+    }
+    else
+    {
+        for (const auto& slot : inventory)
+        {
+            cout << "- " << slot.item->getName() << " x" << slot.quantity << endl; // 아이템 각각 몇개?
+        }
+    }
+    cout << "====================" << endl;
 }
 
 void GameManager::ending()

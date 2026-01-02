@@ -22,6 +22,8 @@ private:
     // 전투 승리 후 보여줄 선택지
     void showPostBattleMenu();
 
+    void displayInventory();
+
 private:
     Character* player;
     BattleManager* battleMg;
