@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "BattleManager.h"
-#include "Monster.h" // TODO: factory pattern
+#include "MonsterSyntax.h" // TODO: factory pattern
 // #include "MonsterFactory.h"
 
 BattleReport BattleManager::battle(Character& character)
@@ -11,7 +11,7 @@ BattleReport BattleManager::battle(Character& character)
     // 팩토리 패턴을 사용하여 플레이어 레벨에 맞는 몬스터 생성
     // TODO: factory pattern
     // Monster* monster = MonsterFactory::createMonster(character.getLevel());
-    Monster* monster = new Monster;
+    Monster* monster = new MonsterSyntax(character.getLevel());
 
     BattleReport report;
     report.monsterName = monster->getName();
