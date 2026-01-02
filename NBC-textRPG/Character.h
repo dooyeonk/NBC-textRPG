@@ -40,6 +40,7 @@ public:
 
     int getHp() const;
     int getMaxHp() const;
+    int getLevel() const;
     int getAttackPower() const;
     int getExperience() const;
     int getMaxExperience() const;

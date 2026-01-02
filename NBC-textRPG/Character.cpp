@@ -134,6 +134,11 @@ int Character::getMaxHp() const
     return maxHp;
 }
 
+int Character::getLevel() const
+{
+    return level;
+}
+
 int Character::getMaxExperience() const
 {
     return maxExperience;
