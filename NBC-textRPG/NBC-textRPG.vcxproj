@@ -132,6 +132,7 @@
     <ClCompile Include="MonsterError.cpp" />
     <ClCompile Include="MonsterGit.cpp" />
     <ClCompile Include="MonsterAlgorithm.cpp" />
+    <ClCompile Include="MonsterBoss.cpp" />
     <ClCompile Include="MonsterMemory.cpp" />
     <ClCompile Include="MonsterSyntax.cpp" />
   </ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="MonsterError.h" />
     <ClInclude Include="MonsterGit.h" />
     <ClInclude Include="MonsterAlgorithm.h" />
+    <ClInclude Include="MonsterBoss.h" />
     <ClInclude Include="MonsterMemory.h" />
     <ClInclude Include="MonsterSyntax.h" />
   </ItemGroup>

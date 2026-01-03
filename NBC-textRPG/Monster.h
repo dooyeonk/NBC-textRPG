@@ -10,13 +10,15 @@ protected:
     std::string name;
     int hp;
     int attackPower;
+    int maxHp;//최대 체력 비율 계산용
 
 public:
     Monster(int characterLevel)
     {
         // - 체력: (레벨 × 20) ~ (레벨 × 30)
         // - 공격력 : (레벨 × 5) ~(레벨 × 10)
-        hp = characterLevel * ((rand() % 11) + 20);
+        maxHp = characterLevel * ((rand() % 11) + 20);
+        hp = maxHp;
         attackPower = characterLevel * ((rand() % 6) + 5);
     }
     virtual void hpDamaged(int damage) = 0;
