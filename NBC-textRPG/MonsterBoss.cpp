@@ -2,43 +2,11 @@
 #include <cstdlib>
 #include <string>
 
-void MonsterBoss::hpDamaged(int damage)
+MonsterBoss::MonsterBoss(int characterLevel, const std::string& name) : Monster(characterLevel, name)
 {
-    hp -= damage;
-    if (hp < 0)
-        hp = 0;
-}
-
-int MonsterBoss::getHealthPoint()
-{
-
-    if (hp > maxTotalHp * 0.1)
-    {
-        std::cout << name << "체력 : ???" << std::endl;
-    }
-    else
-    {
-        std::cout << name << "체력 : " << hp << std::endl;
-    }
-    return hp;
-}
-
-
-
-
-int MonsterBoss::getAttack()
-{
-    return attackPower;
-}
-
-
-bool MonsterBoss::isDead()
-{
-    return hp <= 0;
-}
-
-
-std::string MonsterBoss::getName()
-{
-    return name;
+    // - 체력: (레벨 × 20) ~ (레벨 × 30) x 1.5
+    maxHp = int(characterLevel * ((rand() % 11) + 20) * 1.5);
+    // - 공격력 : (레벨 × 5) ~(레벨 × 10) x 1.5
+    attackPower = int(characterLevel * ((rand() % 6) + 5) * 1.5);
+    hp = maxHp;
 }

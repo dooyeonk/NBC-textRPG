@@ -135,6 +135,7 @@
     <ClCompile Include="MonsterBoss.cpp" />
     <ClCompile Include="MonsterMemory.cpp" />
     <ClCompile Include="MonsterSyntax.cpp" />
+    <ClCompile Include="MonsterUnreal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleManager.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="MonsterBoss.h" />
     <ClInclude Include="MonsterMemory.h" />
     <ClInclude Include="MonsterSyntax.h" />
+    <ClInclude Include="MonsterUnreal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
