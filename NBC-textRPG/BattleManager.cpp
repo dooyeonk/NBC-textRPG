@@ -76,7 +76,7 @@ void BattleManager::executePlayerTurn(Character& character, Monster& monster, in
 
 bool BattleManager::itemUsed(Character& character, int& attackBonus)
 {
-    const auto inventory = character.getInventory();
+    const auto& inventory = character.getInventory();
     if ((rand() % 100) < 10 && inventory.size() > 0)
     {
         // 인벤토리 인덱스 중 하나를 랜덤하게 선택
@@ -110,9 +110,9 @@ void BattleManager::executeMonsterTurn(Character& character, Monster& monster)
 {
     std::cout << "\n[" << monster.getName() << "의 차례]" << std::endl;
     // TODO: getAttackPower()
-    character.setHp(character.getHp() - monster.getAttack());
+    character.setHp(character.getHp() - monster.getAttackPower());
 
-    std::cout << ">> " << monster.getName() << "의 공격! " << character.getName() << "에게 " << monster.getAttack()
+    std::cout << ">> " << monster.getName() << "의 공격! " << character.getName() << "에게 " << monster.getAttackPower()
               << "의 피해를 주었습니다." << std::endl;
 }
 
