@@ -5,6 +5,7 @@
 #include "AttackBoost.h"
 #include "BattleManager.h"
 #include "HealthPotion.h"
+#include "ItemFactory.h"
 #include "MonsterFactory.h"
 
 BattleReport BattleManager::battle(Character& character)
@@ -107,29 +108,14 @@ void BattleManager::processVictory(Character& character, BattleReport& report)
     std::cout << "획득 경험치: " << report.experience << std::endl;
     std::cout << "획득 골드: " << report.gold << " G" << std::endl;
 
-    bool dropItem = (rand() % 100) < 30;
-    if (dropItem)
+    if ((rand() % 100) < 30)
     {
-        Item* item = nullptr;
-        int draw = rand() % 2;
-        switch (draw)
-        {
-        case 0:
-            item = new HealthPotion();
-            break;
-        case 1:
-            item = new AttackBoost();
-            break;
-
-        default:
-            break;
-        }
-
+        Item* item = ItemFactory::createRandomItem();
         if (item)
         {
             report.droppedItem = item->getName();
-            std::cout << "획득 아이템: " << report.droppedItem << std::endl;
 
+            std::cout << "획득 아이템: " << report.droppedItem << std::endl;
             character.addItem(item);
         }
     }
