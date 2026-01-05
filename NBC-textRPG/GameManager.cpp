@@ -1,9 +1,10 @@
-#include "GameManager.h"
-#include "Character.h"
-#include "BattleManager.h"
+#include <chrono> // 딜레이 효과를 위해
 #include <iostream>
 #include <thread> // 딜레이 효과를 위해
-#include <chrono> // 딜레이 효과를 위해
+
+#include "BattleManager.h"
+#include "Character.h"
+#include "GameManager.h"
 
 using namespace std;
 
@@ -128,8 +129,6 @@ void GameManager::displayInventory()
 
 void GameManager::showDefeatSans()
 {
-    // system("cls"); // 화면 정리
-
     cout << "\n" << endl;
     cout << "░░░░░░░▄▄▄▀▀▀▀▀▀▀▀▀▀▀▀▄▄▄░░░░░░░" << endl;
     cout << "░░░░▄▀▀░░░░░░░░░░░░░░░░░░▀▀▄░░░░" << endl;
@@ -159,8 +158,6 @@ void GameManager::showDefeatSans()
 
 void GameManager::ending(const string& bossName)
 {
-    // system("cls");
-
     // 보스 처치 후 정적
     cout << "\n\n";
     cout << "보스 [" << bossName << "]가 비명을 지르며 소멸합니다... " << endl;
@@ -196,11 +193,12 @@ void GameManager::ending(const string& bossName)
     // 엔딩 크레딧
     cout << "\n[ Made by Team 3 ]" << endl;
     this_thread::sleep_for(chrono::seconds(1));
-    cout << " - GameManager   : [팀원 A]" << endl;
-    cout << " - Battle System : [팀원 B]" << endl;
-    cout << " - Character     : [팀원 C]" << endl;
-    cout << " - Monster       : [팀원 D]" << endl;
-    cout << " - Item          : [팀원 E]" << endl;
+    cout << " - GameManager   : [김상민]" << endl;
+    cout << " - Battle System : [강두연]" << endl;
+    cout << " - Character     : [성헌호 & 강두연]" << endl;
+    cout << " - Monster       : [유주연 & 성헌호]" << endl;
+    cout << " - Item          : [송승환]" << endl;
+    cout << " - Shop          : [송승환]" << endl;
 
     cout << "\n\nPress any key to exit...";
     int temp;

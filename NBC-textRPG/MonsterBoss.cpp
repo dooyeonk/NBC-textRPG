@@ -1,6 +1,7 @@
-#include "MonsterBoss.h"
 #include <cstdlib>
 #include <string>
+
+#include "MonsterBoss.h"
 
 MonsterBoss::MonsterBoss(int characterLevel, const std::string& name) : Monster(characterLevel, name)
 {
