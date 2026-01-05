@@ -2,6 +2,7 @@
 
 #include "Character.h"
 #include "Inventory.h"
+#include "Logger.h"
 
 Inventory::~Inventory()
 {
@@ -81,17 +82,19 @@ void Inventory::useRandom(Character& owner)
 
 void Inventory::display() const
 {
-    std::cout << "\n========== [ 인벤토리 목록 ] ==========" << std::endl;
+    Logger::log(LogType::INFO, "\n========== [ 인벤토리 목록 ] ==========\n");
     if (slots.empty())
     {
-        std::cout << " 가방이 비어 있습니다." << std::endl;
+        Logger::log(LogType::INFO, "(비어있음)");
     }
     else
     {
         for (const auto& slot : slots)
         {
-            std::cout << " - " << slot.item->getName() << " (개수: " << slot.quantity << ")" << std::endl;
+
+            Logger::log(LogType::INFO, " - {} (개수:  {}개)", slot.item->getName(), slot.quantity);
         }
     }
-    std::cout << "========================================" << std::endl;
+
+    Logger::log(LogType::INFO, "\n========================================\n");
 }

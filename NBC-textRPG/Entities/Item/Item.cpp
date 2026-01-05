@@ -2,6 +2,7 @@
 #include <string>
 
 #include "Item.h"
+#include "Logger.h"
 
 Item::Item(const std::string& name, int price) : name(name), price(price)
 {
@@ -29,7 +30,6 @@ void Item::setPrice(int itemPrice = 0)
 
 void Item::printEffect(const std::string& statName, int value) const
 {
-    std::cout << "[아이템(" << this->getName() << ") 사용]: ";
     std::string effectString = value > 0 ? "증가" : "감소";
-    std::cout << statName << " " << value << " " << effectString << std::endl;
+    Logger::log(LogType::ITEM, "{} 사용하여 {}이 {}\n", this->getName(), statName, effectString);
 }

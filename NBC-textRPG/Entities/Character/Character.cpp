@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "Inventory.h"
 #include "Item.h"
+#include "Logger.h"
 
 Character* Character::instance = nullptr;
 
@@ -52,7 +53,6 @@ void Character::levelUp()
 {
     if (level >= 10)
     {
-        std::cout << "이미 최대 레벨입니다." << std::endl;
         return;
     }
     experience = 0;
@@ -61,7 +61,7 @@ void Character::levelUp()
     hp = maxHp; // 레벨업 시 체력 풀회복
     attackPower += 5;
 
-    std::cout << "=== LEVEL UP! 현재 레벨: " << level << " ===" << std::endl;
+    Logger::log(LogType::SYSTEM, "레벨업! 현재 레벨: {}", level);
 }
 
 void Character::addGold(int amount)
@@ -92,11 +92,14 @@ void Character::setHp(int hp)
 
 void Character::displayStatus() const
 {
-    std::cout << "\n----------------------------" << std::endl;
-    std::cout << "이름: " << name << " (Lv." << level << ")" << std::endl;
-    std::cout << "HP: " << hp << " / " << maxHp << std::endl;
-    std::cout << "공격력: " << attackPower << " | 골드: " << gold << std::endl;
-    std::cout << "----------------------------\n" << std::endl;
+    Logger::log(LogType::INFO, "\n========== [ 캐릭터 스탯 ] ==========\n");
+    Logger::log(LogType::INFO, "이름: {}", name);
+    Logger::log(LogType::INFO, "레벨: {}", level);
+    Logger::log(LogType::INFO, "HP: {} / {}", hp, maxHp);
+    Logger::log(LogType::INFO, "공격력: {}", attackPower);
+    Logger::log(LogType::INFO, "골드: {}G", gold);
+    Logger::log(LogType::INFO, "경험치: {} / {}", experience, maxExperience);
+    Logger::log(LogType::INFO, "\n=====================================\n");
 }
 
 void Character::useRandomItem()

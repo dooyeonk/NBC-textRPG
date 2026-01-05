@@ -6,6 +6,7 @@
 #include "BattleManager.h"
 #include "HealthPotion.h"
 #include "ItemFactory.h"
+#include "Logger.h"
 #include "MonsterFactory.h"
 
 BattleReport BattleManager::battle(Character& character)
@@ -23,9 +24,15 @@ BattleReport BattleManager::battle(Character& character)
     report.droppedItem = "없음";
     report.isBoss = monster->isBoss();
 
-    std::cout << "\n======================================" << std::endl;
-    std::cout << "   전투 시작: " << monster->getName() << "이(가) 나타났다!" << std::endl;
-    std::cout << "======================================" << std::endl;
+    if (isEasyMode)
+    {
+        // 쉬움 난이도에서는 배틀 시작에서 hp 회복하고 시작
+        character.setHp(character.getMaxHp());
+    }
+
+    Logger::printLine();
+    Logger::log(LogType::SYSTEM, "전투 시작: {}이(가) 나타났다!", monster->getName());
+    Logger::printLine();
 
     // 전투 루프: 누군가 죽을 때까지 반복
     while (true)
@@ -36,6 +43,8 @@ BattleReport BattleManager::battle(Character& character)
         // 몬스터 사망 확인
         if (monster->isDead())
         {
+            Logger::log(LogType::BATTLE, "{}이(가) 쓰러졌다...", monster->getName());
+            Logger::printLine();
             this->processVictory(character, report);
 
             delete monster; // 동적 할당된 몬스터 메모리 해제
@@ -48,7 +57,7 @@ BattleReport BattleManager::battle(Character& character)
         // 플레이어 사망 확인
         if (character.isDead())
         {
-            std::cout << "\n" << character.getName() << "이(가) 쓰러졌습니다..." << std::endl;
+            Logger::log(LogType::DANGER, "{}이(가) 쓰러졌다...", character.getName());
 
             delete monster; // 메모리 해제
             return report;
@@ -58,7 +67,7 @@ BattleReport BattleManager::battle(Character& character)
 
 void BattleManager::executePlayerTurn(Character& character, Monster& monster)
 {
-    std::cout << "\n[" << character.getName() << "의 차례]" << std::endl;
+    Logger::log(LogType::BATTLE, "[{}의 차례]", character.getName());
 
     if (itemUsed(character))
     {
@@ -68,8 +77,8 @@ void BattleManager::executePlayerTurn(Character& character, Monster& monster)
     int finalDamage = character.getTotalAttackPower();
     monster.hpDamaged(finalDamage);
 
-    std::cout << ">> " << character.getName() << "의 공격! " << monster.getName() << "에게 " << finalDamage
-              << "의 피해를 주었습니다." << std::endl;
+    Logger::log(LogType::BATTLE, ">> {}의 공격! {}에게 {}의 피해를 입혔습니다.\n", character.getName(),
+                monster.getName(), finalDamage);
 }
 
 bool BattleManager::itemUsed(Character& character)
@@ -85,13 +94,11 @@ bool BattleManager::itemUsed(Character& character)
 
 void BattleManager::executeMonsterTurn(Character& character, Monster& monster)
 {
-    std::cout << "\n[" << monster.getName() << "의 차례]" << std::endl;
+    Logger::log(LogType::BATTLE, "[{}의 차례]", monster.getName());
     character.setHp(character.getHp() - monster.getAttackPower());
 
-    std::cout << ">> " << monster.getName() << "의 공격! " << character.getName() << "에게 " << monster.getAttackPower()
-              << "의 피해를 주었습니다." << std::endl;
-
-    std::cout << ">> " << character.getName() << "의 체력: " << character.getHp() << "/" << character.getMaxHp();
+    Logger::log(LogType::DANGER, ">> {}의 역습! {}에게 {}의 피해!\n", monster.getName(), character.getName(),
+                monster.getAttackPower());
 }
 
 void BattleManager::processVictory(Character& character, BattleReport& report)
@@ -101,12 +108,9 @@ void BattleManager::processVictory(Character& character, BattleReport& report)
 
     report.gold = (rand() % 11) + 10; // 10 ~ 20 random;
 
-    std::cout << "\n======================================" << std::endl;
-    std::cout << "   전투 승리! 보상을 획득합니다." << std::endl;
-    std::cout << "======================================" << std::endl;
-
-    std::cout << "획득 경험치: " << report.experience << std::endl;
-    std::cout << "획득 골드: " << report.gold << " G" << std::endl;
+    Logger::log(LogType::SYSTEM, "전투 승리! {} 오류를 해결했습니다.", report.monsterName);
+    Logger::printLine();
+    Logger::log(LogType::REWARD, "경험치: {} EXP / 골드: {}G 획득", report.experience, report.gold);
 
     if ((rand() % 100) < 30)
     {
@@ -114,12 +118,22 @@ void BattleManager::processVictory(Character& character, BattleReport& report)
         if (item)
         {
             report.droppedItem = item->getName();
-
-            std::cout << "획득 아이템: " << report.droppedItem << std::endl;
+            Logger::log(LogType::ITEM, "드랍: [{}] 획득", report.droppedItem);
             character.addItem(item);
         }
     }
 
     character.gainExperience(report.experience);
     character.addGold(report.gold);
+
+    Logger::printLine();
+}
+
+void BattleManager::changeMode()
+{
+    isEasyMode = !isEasyMode;
+    std::string modeName = isEasyMode ? "쉬움" : "보통";
+    Logger::printLine();
+    Logger::log(LogType::SYSTEM, "난이도를 {}로 변경합니다.", modeName);
+    Logger::printLine();
 }
