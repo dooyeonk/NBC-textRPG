@@ -21,4 +21,5 @@ public:
 
     void hpDamaged(int damage);
     bool isDead() const;
+    virtual bool isBoss() const;
 };

@@ -10,3 +10,8 @@ MonsterBoss::MonsterBoss(int characterLevel, const std::string& name) : Monster(
     attackPower = int(characterLevel * ((rand() % 6) + 5) * 1.5);
     hp = maxHp;
 }
+
+bool MonsterBoss::isBoss() const
+{
+    return true;
+}

@@ -16,6 +16,7 @@ BattleReport BattleManager::battle(Character& character)
     report.experience = 0;
     report.gold = 0;
     report.droppedItem = "없음";
+    report.isBoss = monster->isBoss();
 
     // "해당 전투 동안 유지"되는 공격력 보너스 (아이템 사용 시 증가)
     int attackBonus = 0;

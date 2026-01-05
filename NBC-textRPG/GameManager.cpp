@@ -7,7 +7,7 @@
 
 using namespace std;
 
-GameManager::GameManager()
+GameManager::GameManager() : player(nullptr), bIsGameOver(false)
 {
     battleMg = new BattleManager();
 }
@@ -44,9 +44,9 @@ void GameManager::run()
         if (bVictory)
         {
             // 보스 잡으면 엔딩
-            if (player->getLevel() >= 10)
+            if (report.isBoss)
             {
-                ending();
+                ending(report.monsterName);
                 break;
             }
             showPostBattleMenu();
@@ -156,13 +156,13 @@ void GameManager::showDefeatSans()
     cin >> temp;
 }
 
-void GameManager::ending()
+void GameManager::ending(const string& bossName)
 {
     system("cls");
 
     // 보스 처치 후 정적
     cout << "\n\n";
-    cout << "보스 [Memory_Leak]가 비명을 지르며 소멸합니다..." << endl;
+    cout << "보스 [" << bossName << "]가 비명을 지르며 소멸합니다... " << endl;
     this_thread::sleep_for(chrono::seconds(2)); // 2초 대기
 
     // 텍스트 연출 (한 줄씩 천천히)

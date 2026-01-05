@@ -40,3 +40,8 @@ bool Monster::isDead() const
 {
     return hp <= 0;
 }
+
+bool Monster::isBoss() const
+{
+    return false;
+}

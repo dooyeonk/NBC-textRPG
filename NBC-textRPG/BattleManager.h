@@ -18,6 +18,7 @@ struct BattleReport
     int gold;
     std::string monsterName;
     std::string droppedItem;
+    bool isBoss;
 };
 
 class BattleManager
