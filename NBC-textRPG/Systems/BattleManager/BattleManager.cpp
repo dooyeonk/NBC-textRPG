@@ -22,9 +22,6 @@ BattleReport BattleManager::battle(Character& character)
     report.droppedItem = "없음";
     report.isBoss = monster->isBoss();
 
-    // "해당 전투 동안 유지"되는 공격력 보너스 (아이템 사용 시 증가)
-    int attackBonus = 0;
-
     std::cout << "\n======================================" << std::endl;
     std::cout << "   전투 시작: " << monster->getName() << "이(가) 나타났다!" << std::endl;
     std::cout << "======================================" << std::endl;
@@ -33,7 +30,7 @@ BattleReport BattleManager::battle(Character& character)
     while (true)
     {
         // 1. 플레이어 턴 수행
-        this->executePlayerTurn(character, *monster, attackBonus);
+        this->executePlayerTurn(character, *monster);
 
         // 몬스터 사망 확인
         if (monster->isDead())
@@ -58,11 +55,11 @@ BattleReport BattleManager::battle(Character& character)
     }
 }
 
-void BattleManager::executePlayerTurn(Character& character, Monster& monster, int& attackBonus)
+void BattleManager::executePlayerTurn(Character& character, Monster& monster)
 {
     std::cout << "\n[" << character.getName() << "의 차례]" << std::endl;
 
-    if (itemUsed(character, attackBonus))
+    if (itemUsed(character))
     {
         return;
     }
@@ -74,7 +71,7 @@ void BattleManager::executePlayerTurn(Character& character, Monster& monster, in
               << "의 피해를 주었습니다." << std::endl;
 }
 
-bool BattleManager::itemUsed(Character& character, int& attackBonus)
+bool BattleManager::itemUsed(Character& character)
 {
     const auto& inventory = character.getInventory();
     if ((rand() % 100) < 20 && inventory.size() > 0)

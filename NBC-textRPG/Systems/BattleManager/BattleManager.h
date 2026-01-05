@@ -12,8 +12,8 @@ public:
     BattleReport battle(Character& character);
 
 private:
-    void executePlayerTurn(Character& character, Monster& monster, int& attackBonus);
+    void executePlayerTurn(Character& character, Monster& monster);
     void executeMonsterTurn(Character& character, Monster& monster);
     void processVictory(Character& character, BattleReport& report);
-    bool itemUsed(Character& character, int& attackBonus);
+    bool itemUsed(Character& character);
 };
