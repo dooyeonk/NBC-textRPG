@@ -3,15 +3,12 @@
 #include <iostream>
 
 #include "BattleManager.h"
-#include "MonsterSyntax.h" // TODO: factory pattern
-// #include "MonsterFactory.h"
+#include "MonsterFactory.h"
 
 BattleReport BattleManager::battle(Character& character)
 {
     // 팩토리 패턴을 사용하여 플레이어 레벨에 맞는 몬스터 생성
-    // TODO: factory pattern
-    // Monster* monster = MonsterFactory::createMonster(character.getLevel());
-    Monster* monster = new MonsterSyntax(character.getLevel());
+    Monster* monster = MonsterFactory::createMonster(character.getLevel());
 
     BattleReport report;
     report.monsterName = monster->getName();
@@ -66,8 +63,6 @@ void BattleManager::executePlayerTurn(Character& character, Monster& monster, in
     }
 
     int finalDamage = character.getAttackPower() + attackBonus;
-    // TODO: 함수명 수정
-    // monster.setHp(monster.getHp() - finalDamage);
     monster.hpDamaged(finalDamage);
 
     std::cout << ">> " << character.getName() << "의 공격! " << monster.getName() << "에게 " << finalDamage
@@ -76,7 +71,7 @@ void BattleManager::executePlayerTurn(Character& character, Monster& monster, in
 
 bool BattleManager::itemUsed(Character& character, int& attackBonus)
 {
-    const auto inventory = character.getInventory();
+    const auto& inventory = character.getInventory();
     if ((rand() % 100) < 10 && inventory.size() > 0)
     {
         // 인벤토리 인덱스 중 하나를 랜덤하게 선택
@@ -109,10 +104,9 @@ bool BattleManager::itemUsed(Character& character, int& attackBonus)
 void BattleManager::executeMonsterTurn(Character& character, Monster& monster)
 {
     std::cout << "\n[" << monster.getName() << "의 차례]" << std::endl;
-    // TODO: getAttackPower()
-    character.setHp(character.getHp() - monster.getAttack());
+    character.setHp(character.getHp() - monster.getAttackPower());
 
-    std::cout << ">> " << monster.getName() << "의 공격! " << character.getName() << "에게 " << monster.getAttack()
+    std::cout << ">> " << monster.getName() << "의 공격! " << character.getName() << "에게 " << monster.getAttackPower()
               << "의 피해를 주었습니다." << std::endl;
 }
 
