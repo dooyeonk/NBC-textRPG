@@ -144,6 +144,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterCompile.h" />
+    <ClInclude Include="MonsterFactory.h" />
     <ClInclude Include="MonsterGit.h" />
     <ClInclude Include="MonsterAlgorithm.h" />
     <ClInclude Include="MonsterBoss.h" />

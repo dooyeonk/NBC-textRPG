@@ -92,5 +92,8 @@
     <ClInclude Include="MonsterUnreal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MonsterFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
