@@ -1,6 +1,7 @@
-#include "MonsterBoss.h"
 #include <cstdlib>
 #include <string>
+
+#include "MonsterBoss.h"
 
 MonsterBoss::MonsterBoss(int characterLevel, const std::string& name) : Monster(characterLevel, name)
 {
@@ -9,4 +10,9 @@ MonsterBoss::MonsterBoss(int characterLevel, const std::string& name) : Monster(
     // - 공격력 : (레벨 × 5) ~(레벨 × 10) x 1.5
     attackPower = int(characterLevel * ((rand() % 6) + 5) * 1.5);
     hp = maxHp;
+}
+
+bool MonsterBoss::isBoss() const
+{
+    return true;
 }
