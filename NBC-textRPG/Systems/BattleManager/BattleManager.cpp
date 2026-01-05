@@ -2,7 +2,9 @@
 #include <cstdlib> // rand(), srand()를 위해 필요
 #include <iostream>
 
+#include "AttackBoost.h"
 #include "BattleManager.h"
+#include "HealthPotion.h"
 #include "MonsterFactory.h"
 
 BattleReport BattleManager::battle(Character& character)
@@ -73,30 +75,14 @@ void BattleManager::executePlayerTurn(Character& character, Monster& monster, in
 bool BattleManager::itemUsed(Character& character, int& attackBonus)
 {
     const auto& inventory = character.getInventory();
-    if ((rand() % 100) < 10 && inventory.size() > 0)
+    if ((rand() % 100) < 20 && inventory.size() > 0)
     {
         // 인벤토리 인덱스 중 하나를 랜덤하게 선택
         int randomIndex = rand() % inventory.size();
         const auto item = inventory[randomIndex].item;
-        ItemEffect effect = item->getEffect();
-
-        std::cout << "[아이템(" << item->getName() << ") 사용]: ";
-
-        if (effect.hp != 0)
-        {
-            character.setHp(std::max(1, std::min(character.getHp() + effect.hp, character.getMaxHp())));
-            std::string effectString = effect.hp > 0 ? "증가" : "감소";
-            std::cout << "HP " << effect.hp << " " << effectString << std::endl;
-        }
-
-        if (effect.attackPower != 0)
-        {
-            attackBonus += effect.attackPower;
-            std::string effectString = effect.attackPower > 0 ? "증가" : "감소";
-            std::cout << "전투시간 동안 공격력이 " << effect.attackPower << " " << effectString;
-        }
-
+        item->use(character);
         character.reduceItem(item->getName());
+
         return true;
     }
     return false;
@@ -124,6 +110,33 @@ void BattleManager::processVictory(Character& character, BattleReport& report)
 
     std::cout << "획득 경험치: " << report.experience << std::endl;
     std::cout << "획득 골드: " << report.gold << " G" << std::endl;
+
+    bool dropItem = (rand() % 100) < 30;
+    if (dropItem)
+    {
+        Item* item = nullptr;
+        int draw = rand() % 2;
+        switch (draw)
+        {
+        case 0:
+            item = new HealthPotion();
+            break;
+        case 1:
+            item = new AttackBoost();
+            break;
+
+        default:
+            break;
+        }
+
+        if (item)
+        {
+            report.droppedItem = item->getName();
+            std::cout << "획득 아이템: " << report.droppedItem << std::endl;
+
+            character.addItem(item);
+        }
+    }
 
     character.gainExperience(report.experience);
     character.addGold(report.gold);

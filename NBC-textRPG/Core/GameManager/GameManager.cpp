@@ -3,6 +3,7 @@
 #include <thread> // 딜레이 효과를 위해
 
 #include "BattleManager.h"
+#include "BattleTypes.h"
 #include "Character.h"
 #include "GameManager.h"
 

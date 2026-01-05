@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Entities\Item\AttackBoost.cpp" />
     <ClCompile Include="Core\GameManager\GameManager.cpp" />
     <ClCompile Include="Entities\Character\Character.cpp" />
     <ClCompile Include="Entities\Item\Item.cpp" />
@@ -139,12 +140,17 @@
     <ClCompile Include="Entities\Monster\MonsterMemory.cpp" />
     <ClCompile Include="Entities\Monster\Boss\MonsterRuntime.cpp" />
     <ClCompile Include="Entities\Monster\MonsterSyntax.cpp" />
+    <ClCompile Include="Entities\Item\HealthPotion.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Systems\BattleManager\BattleManager.cpp" />
     <ClCompile Include="Utils\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Entities\Character\CharacterTypes.h" />
+    <ClInclude Include="Entities\Item\AttackBoost.h" />
     <ClInclude Include="Core\GameManager\GameManager.h" />
+    <ClInclude Include="Entities\Item\ItemTypes.h" />
+    <ClInclude Include="Entities\Item\HealthPotion.h" />
     <ClInclude Include="Systems\BattleManager\BattleTypes.h" />
     <ClInclude Include="Entities\Character\Character.h" />
     <ClInclude Include="Entities\Item\Item.h" />

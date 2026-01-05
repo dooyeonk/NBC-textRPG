@@ -1,20 +1,11 @@
 #pragma once
 
+#include <CharacterTypes.h>
 #include <iostream>
 #include <string>
 #include <vector>
 
-#include "Item.h"
-
-struct InventoryItem
-{
-    Item* item;
-    int quantity;
-
-    InventoryItem(Item* item) : item(item), quantity(1)
-    {
-    }
-};
+class Item;
 
 class Character
 {

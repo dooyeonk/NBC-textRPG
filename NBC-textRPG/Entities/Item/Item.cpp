@@ -1,21 +1,18 @@
+#include <iostream>
 #include <string>
 
 #include "Item.h"
 
-Item::Item()
+Item::Item(const std::string& name, int price) : name(name), price(price)
 {
 }
 
-Item::Item(const std::string& itemName, int itemPrice) : name(itemName), price(itemPrice)
-{
-}
-
-std::string Item::getName()
+std::string Item::getName() const
 {
     return name;
 }
 
-int Item::getPrice()
+int Item::getPrice() const
 {
     return price;
 }
@@ -29,42 +26,10 @@ void Item::setPrice(int itemPrice = 0)
 {
     price = itemPrice;
 }
-HealthPotion::HealthPotion() : heal(50)
-{
-}
 
-HealthPotion::HealthPotion(const std::string& itemName, int itemPrice, int healing)
-    : Item(itemName, itemPrice), heal(healing)
+void Item::printEffect(const std::string& statName, int value) const
 {
-}
-
-HealthPotion::~HealthPotion()
-{
-}
-
-ItemEffect HealthPotion::getEffect()
-{
-    ItemEffect effect;
-    effect.hp = heal;
-    return effect;
-}
-
-AttackBoost::AttackBoost() : attackUp(10)
-{
-}
-
-AttackBoost::AttackBoost(const std::string& itemName, int itemPrice, int atkUp)
-    : Item(itemName, itemPrice), attackUp(atkUp)
-{
-}
-
-AttackBoost::~AttackBoost()
-{
-}
-
-ItemEffect AttackBoost::getEffect()
-{
-    ItemEffect effect;
-    effect.attackPower = attackUp;
-    return effect;
+    std::cout << "[아이템(" << this->getName() << ") 사용]: ";
+    std::string effectString = value > 0 ? "증가" : "감소";
+    std::cout << statName << " " << value << " " << effectString << std::endl;
 }

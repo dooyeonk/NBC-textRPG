@@ -1,6 +1,8 @@
 #include <algorithm>
 
 #include "Character.h"
+#include "CharacterTypes.h"
+#include "Item.h"
 
 Character* Character::instance = nullptr;
 
@@ -108,12 +110,12 @@ void Character::reduceItem(const std::string& itemName)
     {
         if (iterator->item->getName() == itemName)
         {
-
             iterator->quantity--;
             if (iterator->quantity <= 0)
             {
-                delete iterator->item;
+                Item* target = iterator->item;
                 inventory.erase(iterator);
+                delete target;
             }
             return;
         }

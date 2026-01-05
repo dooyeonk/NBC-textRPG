@@ -4,48 +4,26 @@
 
 #include "ItemTypes.h"
 
+class Character;
+
 class Item
 {
-private:
+protected:
     std::string name;
     int price;
 
+    void printEffect(const std::string& statName, int value) const;
+
 public:
-    Item();
-    Item(const std::string& itemName, int itemPrice);
+    Item(const std::string& name, int price);
     virtual ~Item() = default;
 
-    virtual ItemEffect getEffect() = 0;
+    virtual ItemEffect getEffect() const = 0;
+    virtual void use(Character& character) const = 0;
 
-    std::string getName();
-    int getPrice();
+    std::string getName() const;
+    int getPrice() const;
 
-    void setName(const std::string& itemName);
-    void setPrice(int itmePrice);
-};
-
-class HealthPotion : public Item
-{
-private:
-    int heal;
-
-public:
-    HealthPotion();
-    HealthPotion(const std::string& itemName, int itemPrice, int healing);
-    ~HealthPotion();
-
-    ItemEffect getEffect();
-};
-
-class AttackBoost : public Item
-{
-private:
-    int attackUp;
-
-public:
-    AttackBoost();
-    AttackBoost(const std::string& itemName, int itemPrice, int atkUp);
-    ~AttackBoost();
-
-    ItemEffect getEffect();
+    void setName(const std::string& name);
+    void setPrice(int price);
 };
