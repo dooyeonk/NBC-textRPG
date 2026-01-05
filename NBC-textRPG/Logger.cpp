@@ -25,7 +25,7 @@ void Logger::Log(const std::string& message, LogLevel level)
     // 메시지 출력
     std::cout << message << std::endl;
 
-    // 색상 원상복구 (흰색)
+    // 색상 복구 (흰색)
     SetConsoleTextAttribute(hConsole, 7);
 }
 
