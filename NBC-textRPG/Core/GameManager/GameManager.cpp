@@ -86,7 +86,7 @@ void GameManager::showPostBattleMenu()
 
     while (!bReadyForNextBattle)
     {
-        cout << "\n[정비 메뉴] 1.상점 방문  2.인벤토리 확인  3.다음 전투(나가기): ";
+        cout << "\n[정비 메뉴] 1.상점 방문  2.인벤토리 확인  3.스탯 확인  4.다음 전투(나가기): ";
         int choice;
         cin >> choice;
 
@@ -99,6 +99,10 @@ void GameManager::showPostBattleMenu()
             displayInventory();
         }
         else if (choice == 3)
+        {
+            player->displayStatus();
+        }
+        else if (choice == 4)
         {
             cout << "전투 지역으로 이동합니다..." << endl;
             bReadyForNextBattle = true; // 메인 루프로!

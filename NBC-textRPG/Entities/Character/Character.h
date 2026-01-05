@@ -21,6 +21,7 @@ private:
     int hp;
     int maxHp;
     int attackPower;
+    int tempAttackPower;
     int level;
     int experience;
     int maxExperience;
@@ -41,6 +42,8 @@ public:
     void addGold(int amount);
     void addItem(Item* item);
     void useRandomItem();
+    void addTempAttackPower(int amount);
+    void clearTempAttackPower();
 
     void setHp(int hp);
 
@@ -54,6 +57,8 @@ public:
     int getAttackPower() const;
     int getExperience() const;
     int getMaxExperience() const;
+
+    int getTotalAttackPower() const;
 
     const Inventory& getInventory() const;
 };

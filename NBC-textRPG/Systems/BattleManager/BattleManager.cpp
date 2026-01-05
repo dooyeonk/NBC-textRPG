@@ -11,6 +11,8 @@ BattleReport BattleManager::battle(Character& character)
 {
     // 팩토리 패턴을 사용하여 플레이어 레벨에 맞는 몬스터 생성
     Monster* monster = MonsterFactory::createMonster(character.getLevel());
+    // 캐릭터 버프 공격력 초기화
+    character.clearTempAttackPower();
 
     BattleReport report;
     report.monsterName = monster->getName();
@@ -65,7 +67,7 @@ void BattleManager::executePlayerTurn(Character& character, Monster& monster, in
         return;
     }
 
-    int finalDamage = character.getAttackPower() + attackBonus;
+    int finalDamage = character.getTotalAttackPower();
     monster.hpDamaged(finalDamage);
 
     std::cout << ">> " << character.getName() << "의 공격! " << monster.getName() << "에게 " << finalDamage
@@ -90,6 +92,8 @@ void BattleManager::executeMonsterTurn(Character& character, Monster& monster)
 
     std::cout << ">> " << monster.getName() << "의 공격! " << character.getName() << "에게 " << monster.getAttackPower()
               << "의 피해를 주었습니다." << std::endl;
+
+    std::cout << ">> " << character.getName() << "의 체력: " << character.getHp() << "/" << character.getMaxHp();
 }
 
 void BattleManager::processVictory(Character& character, BattleReport& report)

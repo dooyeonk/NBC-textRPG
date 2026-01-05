@@ -10,8 +10,7 @@ AttackBoost::AttackBoost(const std::string& itemName, int itemPrice, int attackU
 
 void AttackBoost::use(Character& character) const
 {
-    std::string itemName = this->getName();
     int value = this->attackUp;
-    character.setHp(std::max(1, std::min(character.getHp() + value, character.getMaxHp())));
+    character.addTempAttackPower(value);
     this->printEffect("공격력", value);
 }

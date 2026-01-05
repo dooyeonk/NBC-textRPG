@@ -8,7 +8,7 @@ Character* Character::instance = nullptr;
 
 Character::Character(std::string name, int healthPoint, int attackPower)
     : name(name), hp(healthPoint), maxHp(healthPoint), attackPower(attackPower), level(1), experience(0),
-      maxExperience(100), gold(0)
+      maxExperience(100), gold(0), tempAttackPower(0)
 {
 }
 
@@ -74,10 +74,20 @@ void Character::addItem(Item* item)
     inventory.add(item);
 }
 
+void Character::addTempAttackPower(int amount)
+{
+    tempAttackPower += amount;
+}
+
+void Character::clearTempAttackPower()
+{
+    tempAttackPower = 0;
+}
+
 void Character::setHp(int hp)
 {
     // 0과 maxHp 사이로 값 제한
-    hp = std::max(0, std::min(hp, maxHp));
+    this->hp = std::max(0, std::min(hp, maxHp));
 }
 
 void Character::displayStatus() const
@@ -132,4 +142,9 @@ int Character::getExperience() const
 const Inventory& Character::getInventory() const
 {
     return inventory;
+}
+
+int Character::getTotalAttackPower() const
+{
+    return attackPower + tempAttackPower;
 }
