@@ -7,5 +7,5 @@
 class MonsterMemory : public Monster
 {
 public:
-    MonsterMemory(int characterLevel, const std::string& name = "메모리");
+    MonsterMemory(int characterLevel, const std::string& name = "MemoryLeak");
 };
