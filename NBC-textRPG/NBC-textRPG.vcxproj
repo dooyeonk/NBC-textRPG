@@ -150,6 +150,7 @@
     <ClInclude Include="Entities\Item\AttackBoost.h" />
     <ClInclude Include="Core\GameManager\GameManager.h" />
     <ClInclude Include="Entities\Item\HealthPotion.h" />
+    <ClInclude Include="Entities\Item\ItemFactory.h" />
     <ClInclude Include="Systems\Inventory\Inventory.h" />
     <ClInclude Include="Systems\BattleManager\BattleTypes.h" />
     <ClInclude Include="Entities\Character\Character.h" />

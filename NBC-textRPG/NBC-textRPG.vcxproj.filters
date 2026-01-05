@@ -122,5 +122,8 @@
     <ClInclude Include="Systems\Inventory\Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Entities\Item\ItemFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
