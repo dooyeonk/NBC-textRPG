@@ -1,13 +1,11 @@
 #pragma once
+
+#include <string>
+
 #include "Monster.h"
 
 class MonsterError : public Monster
 {
 public:
-    MonsterError(int characterLevel);
-    void hpDamaged(int damage);
-    int getHealthPoint();
-    int getAttack();
-    bool isDead();
-    std::string getName();
+    MonsterError(int characterLevel, const std::string& name = "컴파일 에러");
 };

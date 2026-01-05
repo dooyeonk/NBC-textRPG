@@ -1,18 +1,11 @@
 #pragma once
-#include "Monster.h"
-#include <cstdlib>
 
+#include <string>
+
+#include "Monster.h"
 
 class MonsterAlgorithm : public Monster
 {
 public:
-    MonsterAlgorithm(int characterLevel);
-
-    void hpDamaged(int damage);
-    int getHealthPoint();
-    int getAttack();
-    bool isDead();
-    std::string getName();
+    MonsterAlgorithm(int characterLevel, const std::string& name = "알고리즘");
 };
-
-

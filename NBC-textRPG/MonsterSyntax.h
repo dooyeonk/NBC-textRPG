@@ -1,16 +1,11 @@
-#include "Monster.h"
 #pragma once
-#include <cstdlib>
+
 #include <string>
+
+#include "Monster.h"
 
 class MonsterSyntax : public Monster
 {
 public:
-    MonsterSyntax(int characterLevel);
-
-    void hpDamaged(int damage);
-    int getHealthPoint();
-    int getAttack();
-    bool isDead();
-    std::string getName();
+    MonsterSyntax(int characterLevel, const std::string& name = "문법");
 };

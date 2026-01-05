@@ -1,23 +1,11 @@
 #pragma once
-#include "Monster.h"
-#include <cstdlib>
+
 #include <string>
 
+#include "Monster.h"
 
 class MonsterMemory : public Monster
 {
 public:
-    MonsterMemory(int characterLevel);
-
-    void hpDamaged(int damage);
-    int getHealthPoint();
-    int getAttack();
-    bool isDead();
-    std::string getName();
-
-
-
-
-
-
+    MonsterMemory(int characterLevel, const std::string& name = "메모리");
 };

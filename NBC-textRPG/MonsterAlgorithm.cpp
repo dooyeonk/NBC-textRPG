@@ -1,37 +1,7 @@
-#include "MonsterAlgorithm.h"
-#include <cstdlib>
 #include <string>
 
-MonsterAlgorithm::MonsterAlgorithm(int characterLevel) : Monster(characterLevel)
+#include "MonsterAlgorithm.h"
+
+MonsterAlgorithm::MonsterAlgorithm(int characterLevel, const std::string& name) : Monster(characterLevel, name)
 {
-    name = "알고리즘";
-}
-
-void MonsterAlgorithm::hpDamaged(int damage)
-{
-    hp -= damage;
-    if (hp < 0)
-        hp = 0;
-}
-
-
-int MonsterAlgorithm::getHealthPoint()
-{
-    return hp;
-}
-
-
-int MonsterAlgorithm::getAttack()
-{
-    return attackPower;
-}
-
-bool MonsterAlgorithm::isDead()
-{
-    return hp <= 0;
-}
-
-std::string MonsterAlgorithm::getName()
-{
-    return name;
 }
