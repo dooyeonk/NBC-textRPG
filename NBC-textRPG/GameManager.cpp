@@ -36,6 +36,7 @@ void GameManager::run()
     // 루프 시작
     while (!bIsGameOver)
     {
+        system("cls");
         int currentLevel = player->getLevel();
 
         BattleReport report = battleMg->battle(*player);
@@ -127,7 +128,7 @@ void GameManager::displayInventory()
 
 void GameManager::showDefeatSans()
 {
-    system("cls"); // 화면 정리
+    // system("cls"); // 화면 정리
 
     cout << "\n" << endl;
     cout << "░░░░░░░▄▄▄▀▀▀▀▀▀▀▀▀▀▀▀▄▄▄░░░░░░░" << endl;
@@ -158,7 +159,7 @@ void GameManager::showDefeatSans()
 
 void GameManager::ending(const string& bossName)
 {
-    system("cls");
+    // system("cls");
 
     // 보스 처치 후 정적
     cout << "\n\n";

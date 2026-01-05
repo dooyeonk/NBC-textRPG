@@ -8,6 +8,8 @@ int main()
 {
     // 한글 출력을 위한 설정
     SetConsoleOutputCP(CP_UTF8);
+    // 한글 입력
+    SetConsoleCP(CP_UTF8);
     setvbuf(stdout, nullptr, _IOFBF, 1000);
 
     srand(time(NULL));
