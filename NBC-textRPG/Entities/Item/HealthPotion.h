@@ -2,7 +2,6 @@
 
 #include "Character.h"
 #include "Item.h"
-#include "ItemTypes.h"
 
 class HealthPotion : public Item
 {
@@ -12,6 +11,5 @@ private:
 public:
     HealthPotion(const std::string& itemName = "HP포션", int itemPrice = 10, int healing = 50);
 
-    ItemEffect getEffect() const override;
     void use(Character& character) const override;
 };

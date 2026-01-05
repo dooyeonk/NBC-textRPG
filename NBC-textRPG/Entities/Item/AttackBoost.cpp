@@ -2,18 +2,10 @@
 
 #include "AttackBoost.h"
 #include "Character.h"
-#include "ItemTypes.h"
 
 AttackBoost::AttackBoost(const std::string& itemName, int itemPrice, int attackUp)
     : Item(itemName, itemPrice), attackUp(attackUp)
 {
-}
-
-ItemEffect AttackBoost::getEffect() const
-{
-    ItemEffect effect;
-    effect.attackPower = attackUp;
-    return effect;
 }
 
 void AttackBoost::use(Character& character) const

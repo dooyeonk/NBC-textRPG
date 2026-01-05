@@ -2,8 +2,6 @@
 
 #include <string>
 
-#include "ItemTypes.h"
-
 class Character;
 
 class Item
@@ -18,7 +16,6 @@ public:
     Item(const std::string& name, int price);
     virtual ~Item() = default;
 
-    virtual ItemEffect getEffect() const = 0;
     virtual void use(Character& character) const = 0;
 
     std::string getName() const;
