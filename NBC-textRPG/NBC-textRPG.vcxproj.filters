@@ -39,7 +39,7 @@
     <ClCompile Include="MonsterBoss.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MonsterError.cpp">
+    <ClCompile Include="MonsterCompile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MonsterGit.cpp">
@@ -77,7 +77,7 @@
     <ClInclude Include="MonsterBoss.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterError.h">
+    <ClInclude Include="MonsterCompile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MonsterGit.h">

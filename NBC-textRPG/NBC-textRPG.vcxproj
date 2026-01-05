@@ -129,7 +129,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="MonsterError.cpp" />
+    <ClCompile Include="MonsterCompile.cpp" />
     <ClCompile Include="MonsterGit.cpp" />
     <ClCompile Include="MonsterAlgorithm.cpp" />
     <ClCompile Include="MonsterBoss.cpp" />
@@ -143,7 +143,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
-    <ClInclude Include="MonsterError.h" />
+    <ClInclude Include="MonsterCompile.h" />
     <ClInclude Include="MonsterGit.h" />
     <ClInclude Include="MonsterAlgorithm.h" />
     <ClInclude Include="MonsterBoss.h" />
