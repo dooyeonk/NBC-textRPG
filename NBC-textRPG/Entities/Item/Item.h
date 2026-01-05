@@ -1,11 +1,8 @@
 #pragma once
+
 #include <string>
 
-struct ItemEffect
-{
-    int hp = 0;
-    int attackPower = 0;
-};
+#include "ItemTypes.h"
 
 class Item
 {

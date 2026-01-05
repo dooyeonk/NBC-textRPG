@@ -8,7 +8,7 @@
 #include "MonsterSyntax.h"
 
 // boss monster
-#include "MonsterUnreal.h"
+#include "Boss/MonsterRuntime.h"
 
 class MonsterFactory
 {
@@ -44,7 +44,7 @@ public:
         else
         {
             // level 10 (boss)
-            return new MonsterUnreal(characterLevel);
+            return new MonsterRuntime(characterLevel);
         }
     }
 };

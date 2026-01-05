@@ -15,90 +15,93 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BattleManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Monster.cpp">
+    <ClCompile Include="Core\GameManager\GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MonsterAlgorithm.cpp">
+    <ClCompile Include="Entities\Character\Character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MonsterBoss.cpp">
+    <ClCompile Include="Entities\Item\Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MonsterCompile.cpp">
+    <ClCompile Include="Entities\Monster\Monster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MonsterGit.cpp">
+    <ClCompile Include="Entities\Monster\MonsterAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MonsterMemory.cpp">
+    <ClCompile Include="Entities\Monster\Boss\MonsterBoss.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MonsterSyntax.cpp">
+    <ClCompile Include="Entities\Monster\MonsterCompile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MonsterUnreal.cpp">
+    <ClCompile Include="Entities\Monster\MonsterGit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Logger.cpp">
+    <ClCompile Include="Entities\Monster\MonsterMemory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Monster\Boss\MonsterRuntime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\Monster\MonsterSyntax.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\BattleManager\BattleManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BattleManager.h">
+    <ClInclude Include="Core\GameManager\GameManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Character.h">
+    <ClInclude Include="Systems\BattleManager\BattleTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
+    <ClInclude Include="Entities\Character\Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
+    <ClInclude Include="Entities\Item\Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Monster.h">
+    <ClInclude Include="Entities\Monster\Monster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterAlgorithm.h">
+    <ClInclude Include="Entities\Monster\MonsterAlgorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterBoss.h">
+    <ClInclude Include="Entities\Monster\Boss\MonsterBoss.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterCompile.h">
+    <ClInclude Include="Entities\Monster\MonsterCompile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterGit.h">
+    <ClInclude Include="Entities\Monster\MonsterFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterMemory.h">
+    <ClInclude Include="Entities\Monster\MonsterGit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterSyntax.h">
+    <ClInclude Include="Entities\Monster\MonsterMemory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterUnreal.h">
+    <ClInclude Include="Entities\Monster\Boss\MonsterRuntime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonsterFactory.h">
+    <ClInclude Include="Entities\Monster\MonsterSyntax.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Logger.h">
+    <ClInclude Include="Systems\BattleManager\BattleManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
