@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-#include "Inventory.h"
+#include "Systems/Inventory/Inventory.h"
 
 class Item;
 

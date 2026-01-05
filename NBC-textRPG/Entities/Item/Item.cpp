@@ -2,7 +2,7 @@
 #include <string>
 
 #include "Item.h"
-#include "Logger.h"
+#include "Utils/Logger.h"
 
 Item::Item(const std::string& name, int price) : name(name), price(price)
 {

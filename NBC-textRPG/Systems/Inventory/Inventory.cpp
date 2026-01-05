@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "Character.h"
+#include "Entities/Character/Character.h"
 #include "Inventory.h"
-#include "Logger.h"
+#include "Utils/Logger.h"
 
 Inventory::~Inventory()
 {

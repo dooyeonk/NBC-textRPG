@@ -105,7 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir)Core;$(ProjectDir)Core/GameManager;$(ProjectDir)Entities;$(ProjectDir)Entities/Monster;$(ProjectDir)Entities/Monster/Boss;$(ProjectDir)Entities/Character;$(ProjectDir)Entities/Item;$(ProjectDir)Systems;$(ProjectDir)Systems/BattleManager;$(ProjectDir)Systems/Inventory;$(ProjectDir)Utils</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

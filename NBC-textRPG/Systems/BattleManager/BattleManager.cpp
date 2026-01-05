@@ -1,13 +1,11 @@
 #include <algorithm>
 #include <cstdlib> // rand(), srand()를 위해 필요
-#include <iostream>
 
-#include "AttackBoost.h"
 #include "BattleManager.h"
-#include "HealthPotion.h"
-#include "ItemFactory.h"
-#include "Logger.h"
-#include "MonsterFactory.h"
+#include "Entities/Character/Character.h"
+#include "Entities/Item/ItemFactory.h"
+#include "Entities/Monster/MonsterFactory.h"
+#include "Utils/Logger.h"
 
 BattleReport BattleManager::battle(Character& character)
 {

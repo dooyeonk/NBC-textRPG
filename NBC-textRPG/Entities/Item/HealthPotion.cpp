@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <iostream>
 
-#include "Character.h"
+#include "Entities/Character/Character.h"
 #include "HealthPotion.h"
 
 HealthPotion::HealthPotion(const std::string& name, int price, int healing) : Item(name, price), healing(healing)

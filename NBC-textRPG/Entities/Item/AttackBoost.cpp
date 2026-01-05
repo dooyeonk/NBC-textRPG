@@ -1,7 +1,7 @@
 #include <algorithm>
 
 #include "AttackBoost.h"
-#include "Character.h"
+#include "Entities/Character/Character.h"
 
 AttackBoost::AttackBoost(const std::string& itemName, int itemPrice, int attackUp)
     : Item(itemName, itemPrice), attackUp(attackUp)

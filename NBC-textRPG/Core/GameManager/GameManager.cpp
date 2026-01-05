@@ -2,10 +2,10 @@
 #include <iostream>
 #include <thread> // 딜레이 효과를 위해
 
-#include "BattleManager.h"
-#include "BattleTypes.h"
-#include "Character.h"
-#include "GameManager.h"
+#include "Core/GameManager/GameManager.h"
+#include "Entities/Character/Character.h"
+#include "Systems/BattleManager/BattleManager.h"
+#include "Systems/BattleManager/BattleTypes.h"
 
 using namespace std;
 

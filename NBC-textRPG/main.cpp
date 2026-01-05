@@ -1,8 +1,9 @@
-#include "Character.h"
-#include "GameManager.h"
 #include <cstdlib>
 #include <ctime>
 #include <windows.h>
+
+#include "Core/GameManager/GameManager.h"
+#include "Entities/Character/Character.h"
 
 int main()
 {

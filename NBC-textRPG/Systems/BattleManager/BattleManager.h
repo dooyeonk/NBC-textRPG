@@ -3,8 +3,8 @@
 #include <string>
 
 #include "BattleTypes.h"
-#include "Character.h"
-#include "Monster.h"
+#include "Entities/Character/Character.h"
+#include "Entities/Monster/Monster.h"
 
 class BattleManager
 {

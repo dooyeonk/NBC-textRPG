@@ -1,9 +1,9 @@
 #include <algorithm>
 
 #include "Character.h"
-#include "Inventory.h"
-#include "Item.h"
-#include "Logger.h"
+#include "Entities/Item/Item.h"
+#include "Systems/Inventory/Inventory.h"
+#include "Utils/Logger.h"
 
 Character* Character::instance = nullptr;
 

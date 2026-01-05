@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Character.h"
+#include "Entities/Character/Character.h"
 #include "Item.h"
 
 class HealthPotion : public Item
