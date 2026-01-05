@@ -1,7 +1,7 @@
 #include <algorithm>
 
 #include "Character.h"
-#include "CharacterTypes.h"
+#include "Inventory.h"
 #include "Item.h"
 
 Character* Character::instance = nullptr;
@@ -69,24 +69,9 @@ void Character::addGold(int amount)
     gold += amount;
 }
 
-void Character::addItem(Item* newItem)
+void Character::addItem(Item* item)
 {
-    if (!newItem)
-    {
-        return;
-    }
-
-    for (auto& slot : inventory)
-    {
-        if (slot.item->getName() == newItem->getName())
-        {
-            slot.quantity++;
-            std::cout << newItem->getName() << "의 수량이 증가했습니다." << std::endl;
-            return;
-        }
-    }
-
-    inventory.push_back(InventoryItem(newItem));
+    inventory.add(item);
 }
 
 void Character::setHp(int hp)
@@ -104,22 +89,9 @@ void Character::displayStatus() const
     std::cout << "----------------------------\n" << std::endl;
 }
 
-void Character::reduceItem(const std::string& itemName)
+void Character::useRandomItem()
 {
-    for (auto iterator = inventory.begin(); iterator != inventory.end(); ++iterator)
-    {
-        if (iterator->item->getName() == itemName)
-        {
-            iterator->quantity--;
-            if (iterator->quantity <= 0)
-            {
-                Item* target = iterator->item;
-                inventory.erase(iterator);
-                delete target;
-            }
-            return;
-        }
-    }
+    inventory.useRandom(*this);
 }
 
 std::string Character::getName() const
@@ -157,7 +129,7 @@ int Character::getExperience() const
     return experience;
 }
 
-const std::vector<InventoryItem>& Character::getInventory() const
+const Inventory& Character::getInventory() const
 {
     return inventory;
 }

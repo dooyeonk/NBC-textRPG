@@ -112,20 +112,7 @@ void GameManager::showPostBattleMenu()
 
 void GameManager::displayInventory()
 {
-    cout << "\n=== [ 인벤토리 ] ===" << endl;
-    const auto& inventory = player->getInventory();
-    if (inventory.empty())
-    {
-        cout << "(비어있음)" << endl;
-    }
-    else
-    {
-        for (const auto& slot : inventory)
-        {
-            cout << "- " << slot.item->getName() << " x" << slot.quantity << endl; // 아이템 각각 몇개?
-        }
-    }
-    cout << "====================" << endl;
+    player->getInventory().display();
 }
 
 void GameManager::showDefeatSans()

@@ -77,12 +77,7 @@ bool BattleManager::itemUsed(Character& character, int& attackBonus)
     const auto& inventory = character.getInventory();
     if ((rand() % 100) < 20 && inventory.size() > 0)
     {
-        // 인벤토리 인덱스 중 하나를 랜덤하게 선택
-        int randomIndex = rand() % inventory.size();
-        const auto item = inventory[randomIndex].item;
-        item->use(character);
-        character.reduceItem(item->getName());
-
+        character.useRandomItem();
         return true;
     }
     return false;

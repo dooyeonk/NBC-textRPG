@@ -105,7 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir)Core;$(ProjectDir)Core/GameManager;$(ProjectDir)Entities;$(ProjectDir)Entities/Monster;$(ProjectDir)Entities/Monster/Boss;$(ProjectDir)Entities/Character;$(ProjectDir)Entities/Item;$(ProjectDir)Systems;$(ProjectDir)Systems/BattleManager;$(ProjectDir)Utils</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Core;$(ProjectDir)Core/GameManager;$(ProjectDir)Entities;$(ProjectDir)Entities/Monster;$(ProjectDir)Entities/Monster/Boss;$(ProjectDir)Entities/Character;$(ProjectDir)Entities/Item;$(ProjectDir)Systems;$(ProjectDir)Systems/BattleManager;$(ProjectDir)Systems/Inventory;$(ProjectDir)Utils</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,16 +141,17 @@
     <ClCompile Include="Entities\Monster\Boss\MonsterRuntime.cpp" />
     <ClCompile Include="Entities\Monster\MonsterSyntax.cpp" />
     <ClCompile Include="Entities\Item\HealthPotion.cpp" />
+    <ClCompile Include="Systems\Inventory\Inventory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Systems\BattleManager\BattleManager.cpp" />
     <ClCompile Include="Utils\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Entities\Character\CharacterTypes.h" />
     <ClInclude Include="Entities\Item\AttackBoost.h" />
     <ClInclude Include="Core\GameManager\GameManager.h" />
     <ClInclude Include="Entities\Item\ItemTypes.h" />
     <ClInclude Include="Entities\Item\HealthPotion.h" />
+    <ClInclude Include="Systems\Inventory\Inventory.h" />
     <ClInclude Include="Systems\BattleManager\BattleTypes.h" />
     <ClInclude Include="Entities\Character\Character.h" />
     <ClInclude Include="Entities\Item\Item.h" />
