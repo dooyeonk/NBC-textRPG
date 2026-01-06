@@ -30,6 +30,11 @@ BattleReport BattleManager::battle(Character& character)
     }
 
     Logger::printLine();
+    if (report.isBoss)
+    {
+        Logger::log(LogType::SYSTEM, "이제 일반 에러는 상대도 안된다!");
+        Logger::log(LogType::SYSTEM, "보스 전투를 시작합니다!");
+    }
     Logger::log(LogType::SYSTEM, "전투 시작: {}이(가) 나타났다!", monster->getName());
     Logger::printLine();
 
