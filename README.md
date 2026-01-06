@@ -1,21 +1,57 @@
-아래 설명을 보고 초기세팅을 진행해주세요.
+# NBC-textRPG
 
-## 1. repository 클론
-#### a) github desktop 열기
-#### b) File > Clone Repository 클릭
-<img width="375" height="278" alt="1" src="https://github.com/user-attachments/assets/da01f408-dbc6-4945-8a1d-013735297b9b" />
+간단한 텍스트 기반 RPG 스타일 프로젝트로, 교육용 게임 컨셉으로 개발된 C++(C++14) 기반 콘솔 애플리케이션입니다. 플레이어(수강생)가 몬스터(버그/오류)를 해결하고 성장하는 구조를 가집니다.
 
-#### c) 위에 칸에 `https://github.com/dooyeonk/NBC-textRPG.git` 입력 및 아래에는 원하는 경로 설정 후 Clone 버튼 클릭
-<img width="346" height="208" alt="2" src="https://github.com/user-attachments/assets/717dadfd-5227-487c-9788-01490c553b03" />
+---
 
-## 2. project 세팅 동기화
-#### a) visual studio 2022 열고 open a project or solution 누르거나 클론한 폴더에 접근하여 솔루션 파일(`NBC-textRPG.sln`) 클릭
-#### b) 아래 이미지와 같이 Debug, x64 로 설정 (이후 건들지 말아주세요!)
-<img width="1266" height="91" alt="3" src="https://github.com/user-attachments/assets/ef30a640-6d3b-43cd-a7ea-d4e083d98fe0" />
+## 개요
 
-#### c) Tools(도구) > Options(설정?) 들어가기
-<img width="1062" height="506" alt="4" src="https://github.com/user-attachments/assets/7fcb8e30-4589-45ad-b6d9-7f09b3fdd197" />
+이 리포지토리는 게임의 핵심 로직, 엔터티(캐릭터/몬스터/아이템), 시스템(전투/상점/인벤토리)과 유틸리티(로그)를 포함합니다. Visual Studio 2022에서 빌드/실행을 염두에 두고 구성되어 있습니다.
 
-#### d) cleanup 검색 후 Text Editor > Code Cleanup 에서 아래 이미지와 같이 체크해주기
-<img width="968" height="527" alt="5" src="https://github.com/user-attachments/assets/ca6e1701-a996-44fc-b19a-ba102e6a68e9" />
+---
 
+## 주요 디렉터리(요약)
+
+- `Core/`
+  - 게임의 진입점과 전체 흐름을 제어하는 코어 로직을 포함합니다.
+  - 예: `Core/GameManager/` — 게임 루프, 플레이어 생성, 전투 호출, 상점 진입, 엔딩 및 게임오버 처리.
+
+- `Entities/`
+  - 게임에 등장하는 엔터티를 정의합니다.
+  - `Entities/Character/` — `Character` 싱글톤, 상태(HP, 레벨, 경험치, 골드), 인벤토리 관리.
+  - `Entities/Monster/` — `Monster` 기본 클래스와 개별 몬스터/보스 구현, `MonsterFactory`.
+  - `Entities/Item/` — `Item` 추상 클래스와 구체 아이템, `ItemManager`(아이템 프로토타입 레지스트리).
+
+- `Systems/`
+  - 게임 시스템(전투, 상점, 인벤토리 등) 관련 로직을 포함합니다.
+  - `Systems/BattleManager/` — 전투 흐름 구현(`BattleManager`), `BattleTypes` 등.
+  - `Systems/Shop/` — 상점 인터페이스(`Shop`), 구매/판매 처리.
+  - `Systems/Inventory/` — `Inventory` 구현과 `InventorySlot` 구조체.
+
+- `Utils/`
+  - 공통 유틸리티 코드.
+  - 예: `Utils/Logger` — 콘솔 로그 포맷, 컬러 출력, 킬 로그 기록/출력.
+
+- 루트 설정 파일
+  - `.editorconfig` — 코드 스타일과 포맷 규칙(스페이스 4, 인코딩 등).
+
+---
+
+## 빌드 및 실행 (Visual Studio 2022)
+
+1. 리포지터리 루트의 솔루션 파일(`.sln`)을 Visual Studio 2022로 엽니다.
+2. 플랫폼(x86/x64) 및 구성(Debug/Release)을 선택합니다.
+3. `빌드` → `솔루션 빌드`를 실행합니다.
+4. 빌드가 성공하면 디버그 또는 릴리스에서 실행하거나 `bin`/출력 폴더의 실행 파일을 사용합니다.
+
+터미널 빌드(선택)
+- CMake 또는 다른 빌드 시스템이 설정되어 있으면 해당 빌드 스크립트를 사용하세요. 현재 프로젝트는 Visual Studio 솔루션 기반입니다.
+
+---
+
+## 코드 스타일 및 주의사항
+
+- `.editorconfig`에서 정의한 규칙을 따릅니다: 스페이스 4, UTF-8, 끝에 개행 등.
+- C++14 표준을 사용합니다. C++20 전용 기능 사용은 피하세요.
+- 싱글톤, 원시 포인터(new/delete) 사용이 있으므로 메모리 소유권 및 누수에 유의하세요.
+- 로그 출력은 `Utils/Logger`를 사용하여 일관된 포맷과 컬러를 유지하세요.
