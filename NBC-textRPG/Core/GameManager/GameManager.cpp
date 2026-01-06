@@ -6,6 +6,7 @@
 #include "Entities/Character/Character.h"
 #include "Systems/BattleManager/BattleManager.h"
 #include "Systems/BattleManager/BattleTypes.h"
+#include "Utils/Logger.h"
 
 using namespace std;
 
@@ -90,7 +91,8 @@ void GameManager::showPostBattleMenu()
 
     while (!bReadyForNextBattle)
     {
-        cout << "\n[정비 메뉴] 1.상점 방문  2.인벤토리 확인  3.스탯 확인  4.다음 전투 시작  9. 난이도 변경  0. 게임 "
+        cout << "\n[정비 메뉴] 1.상점 방문  2.인벤토리 확인  3.스탯 확인  4.다음 전투 시작\n8. 킬로그 확인  9. 난이도 "
+                "변경  0. 게임 "
                 "종료: ";
         int choice;
         cin >> choice;
@@ -111,6 +113,10 @@ void GameManager::showPostBattleMenu()
         {
             cout << "전투 지역으로 이동합니다..." << endl;
             bReadyForNextBattle = true; // 메인 루프로!
+        }
+        else if (choice == 8)
+        {
+            Logger::showKillLogs();
         }
         else if (choice == 9)
         {
@@ -157,6 +163,8 @@ void GameManager::showDefeatSans()
     cout << "=============================================" << endl;
     cout << "                 GAME OVER                   " << endl;
 
+    Logger::showKillLogs();
+
     cout << "\n계속하려면 아무 키나 누르세요...";
     string temp;
     cin >> temp;
@@ -178,6 +186,8 @@ void GameManager::ending(const string& bossName)
         cout << ">> " << line << endl;
         this_thread::sleep_for(chrono::milliseconds(800));
     }
+
+    Logger::showKillLogs();
 
     // ASCII 아트 암거나
     cout << "\n\n";
