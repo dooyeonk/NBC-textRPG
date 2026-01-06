@@ -49,10 +49,9 @@ void GameManager::run()
             continue;
         }
 
-        // 3. (선택사항) 이름 길이 제한
-        if (name.length() > 10)
+        if (name.length() > 30)
         {
-            Logger::log(LogType::SYSTEM, "이름이 너무 깁니다. (최대 10자)");
+            Logger::log(LogType::SYSTEM, "이름이 너무 깁니다.");
             continue;
         }
 
