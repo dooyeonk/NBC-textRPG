@@ -59,7 +59,7 @@ public:
     }
 
     // 지금까지 잡은 목록 요약 출력
-    static void showStatistics()
+    static void showKillLogs()
     {
         printLine();
         log(LogType::SYSTEM, "===== 개발 기록 (Monster Kill Log) =====");

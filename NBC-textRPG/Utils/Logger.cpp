@@ -1,5 +1,7 @@
 #include "Logger.h"
 
+std::map<std::string, int> Logger::monsterKillCounts;
+
 // 1. 타입에 따른 색상 및 말머리 적용
 void Logger::applyColor(LogType type)
 {
