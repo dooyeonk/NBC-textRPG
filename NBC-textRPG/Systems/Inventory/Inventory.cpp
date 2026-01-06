@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 #include "Entities/Character/Character.h"
 #include "Inventory.h"
@@ -6,14 +7,10 @@
 
 Inventory::~Inventory()
 {
-    for (auto& slot : slots)
-    {
-        delete slot.item;
-    }
     slots.clear();
 }
 
-void Inventory::add(Item* item)
+void Inventory::add(std::shared_ptr<Item> item)
 {
     if (!item)
         return;
@@ -24,7 +21,6 @@ void Inventory::add(Item* item)
         if (slot.item->getName() == item->getName())
         {
             slot.quantity++;
-            delete item; // 이미 있는 아이템이므로 메모리 해제
             return;
         }
     }
@@ -36,12 +32,11 @@ void Inventory::executeRemove(std::vector<InventorySlot>::iterator it)
     it->quantity--;
     if (it->quantity <= 0)
     {
-        delete it->item;
         slots.erase(it);
     }
 }
 
-void Inventory::remove(Item* target)
+void Inventory::remove(std::shared_ptr<Item> target)
 {
     if (!target)
         return;
@@ -69,15 +64,17 @@ void Inventory::remove(const std::string& name)
 void Inventory::useRandom(Character& owner)
 {
     if (slots.empty())
+    {
         return;
+    }
 
     int randomIndex = rand() % slots.size();
-    Item* selectedItem = slots[randomIndex].item;
+    auto selectedItem = slots[randomIndex].item;
 
     // 아이템 효과 적용
     selectedItem->use(owner);
-    // quantity 차감 혹은 삭제
-    this->remove(selectedItem);
+    auto it = slots.begin() + randomIndex;
+    executeRemove(it);
 }
 
 void Inventory::display() const

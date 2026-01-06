@@ -3,7 +3,7 @@
 
 #include "BattleManager.h"
 #include "Entities/Character/Character.h"
-#include "Entities/Item/ItemFactory.h"
+#include "Entities/Item/ItemManager.h"
 #include "Entities/Monster/MonsterFactory.h"
 #include "Utils/Logger.h"
 
@@ -118,7 +118,7 @@ void BattleManager::processVictory(Character& character, BattleReport& report)
 
     if ((rand() % 100) < 30)
     {
-        Item* item = ItemFactory::createRandomItem();
+        auto item = ItemManager::getInstance().getRandomItem();
         if (item)
         {
             report.droppedItem = item->getName();

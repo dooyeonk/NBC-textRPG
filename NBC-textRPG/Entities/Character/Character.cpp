@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <memory>
 
 #include "Character.h"
 #include "Entities/Item/Item.h"
@@ -69,7 +70,7 @@ void Character::addGold(int amount)
     gold += amount;
 }
 
-void Character::addItem(Item* item)
+void Character::addItem(std::shared_ptr<Item> item)
 {
     inventory.add(item);
 }
@@ -142,7 +143,7 @@ int Character::getExperience() const
     return experience;
 }
 
-const Inventory& Character::getInventory() const
+Inventory& Character::getInventory()
 {
     return inventory;
 }
@@ -150,4 +151,19 @@ const Inventory& Character::getInventory() const
 int Character::getTotalAttackPower() const
 {
     return attackPower + tempAttackPower;
+}
+
+int Character::getGold() const
+{
+    return gold;
+}
+
+void Character::spendGold(int amount)
+{
+    if (amount > gold)
+    {
+        Logger::log(LogType::SYSTEM, "골드가 부족합니다.");
+        return;
+    }
+    gold -= amount;
 }

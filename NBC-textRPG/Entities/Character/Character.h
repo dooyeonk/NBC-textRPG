@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <memory>
 #include <string>
 
 #include "Systems/Inventory/Inventory.h"
@@ -40,7 +41,8 @@ public:
     void gainExperience(int amount);
     void levelUp();
     void addGold(int amount);
-    void addItem(Item* item);
+    void spendGold(int amount);
+    void addItem(std::shared_ptr<Item> item);
     void useRandomItem();
     void addTempAttackPower(int amount);
     void clearTempAttackPower();
@@ -57,8 +59,9 @@ public:
     int getAttackPower() const;
     int getExperience() const;
     int getMaxExperience() const;
+    int getGold() const;
 
     int getTotalAttackPower() const;
 
-    const Inventory& getInventory() const;
+    Inventory& getInventory();
 };

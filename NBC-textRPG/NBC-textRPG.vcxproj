@@ -146,12 +146,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Systems\BattleManager\BattleManager.cpp" />
     <ClCompile Include="Utils\Logger.cpp" />
+    <ClCompile Include="Systems\Shop\Shop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entities\Item\AttackBoost.h" />
     <ClInclude Include="Core\GameManager\GameManager.h" />
     <ClInclude Include="Entities\Item\HealthPotion.h" />
-    <ClInclude Include="Entities\Item\ItemFactory.h" />
+    <ClInclude Include="Entities\Item\ItemManager.h" />
     <ClInclude Include="Systems\Inventory\Inventory.h" />
     <ClInclude Include="Systems\BattleManager\BattleTypes.h" />
     <ClInclude Include="Entities\Character\Character.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Entities\Monster\MonsterSyntax.h" />
     <ClInclude Include="Systems\BattleManager\BattleManager.h" />
     <ClInclude Include="Utils\Logger.h" />
+    <ClInclude Include="Systems\Shop\Shop.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
