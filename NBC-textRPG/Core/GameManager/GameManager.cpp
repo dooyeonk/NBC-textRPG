@@ -229,11 +229,10 @@ void GameManager::ending(const string& bossName)
     cout << "\n[ Made by Team 3 ]" << endl;
     this_thread::sleep_for(chrono::seconds(1));
     cout << " - GameManager   : [김상민]" << endl;
-    cout << " - Logger        : [김상민 & 강두연]" << endl;
+    cout << " - Logger        : [김상민]" << endl;
     cout << " - Battle System : [강두연]" << endl;
     cout << " - Character     : [성헌호 & 강두연]" << endl;
     cout << " - Monster       : [유주연 & 성헌호]" << endl;
-    cout << " - BossMonster   : [유주연 & 성헌호]" << endl;
     cout << " - Item          : [송승환]" << endl;
     cout << " - Shop          : [송승환]" << endl;
 
