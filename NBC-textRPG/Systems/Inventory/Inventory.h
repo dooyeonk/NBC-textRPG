@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -8,7 +9,7 @@
 
 struct InventorySlot
 {
-    Item* item;
+    std::shared_ptr<Item> item;
     int quantity;
 };
 
@@ -24,9 +25,9 @@ public:
     Inventory() = default;
     ~Inventory();
 
-    void add(Item* newItem);
+    void add(std::shared_ptr<Item> newItem);
 
-    void remove(Item* targetItem);
+    void remove(std::shared_ptr<Item> targetItem);
     void remove(const std::string& itemName);
 
     void useRandom(class Character& owner);

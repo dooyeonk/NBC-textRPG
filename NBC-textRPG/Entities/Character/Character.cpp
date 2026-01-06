@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <memory>
 
 #include "Character.h"
 #include "Entities/Item/Item.h"
@@ -69,7 +70,7 @@ void Character::addGold(int amount)
     gold += amount;
 }
 
-void Character::addItem(Item* item)
+void Character::addItem(std::shared_ptr<Item> item)
 {
     inventory.add(item);
 }
