@@ -24,8 +24,9 @@ BattleReport BattleManager::battle(Character& character)
 
     if (isEasyMode)
     {
-        // 쉬움 난이도에서는 배틀 시작에서 hp 회복하고 시작
+        // 쉬움 난이도에서는 배틀 시작에서 hp 회복 및 공격력 버프받고 시작
         character.setHp(character.getMaxHp());
+        character.addTempAttackPower(30);
     }
 
     Logger::printLine();
@@ -125,6 +126,8 @@ void BattleManager::processVictory(Character& character, BattleReport& report)
     character.addGold(report.gold);
 
     Logger::printLine();
+
+    Logger::recordKill(report.monsterName);
 }
 
 void BattleManager::changeMode()
