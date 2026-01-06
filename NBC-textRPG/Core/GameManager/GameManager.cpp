@@ -32,7 +32,7 @@ void GameManager::run()
 {
     // 캐릭터 생성
     string name;
-    cout << "용사의 이름을 입력하세요: ";
+    cout << "수강생의 이름을 입력하세요: ";
     cin >> name;
     player = Character::getInstance(name); // 싱글톤
 
@@ -191,15 +191,16 @@ void GameManager::ending(const string& bossName)
 
     // ASCII 아트 암거나
     cout << "\n\n";
-    cout << "      ___________      " << endl;
+    cout << "                +      " << endl;
+    cout << "    +  __________   +  " << endl;
     cout << "     '._==_==_=_.'     " << endl;
-    cout << "     .-\\:      /-.    " << endl;
-    cout << "    | (|:.     |) |    " << endl;
+    cout << "  +  .-\\:      /-.    " << endl;
+    cout << " +  | (|:.     |) |    " << endl;
     cout << "     '-|:.     |-'     " << endl;
     cout << "       \\::.    /      " << endl;
-    cout << "        '::. .'        " << endl;
-    cout << "          ) (          " << endl;
-    cout << "        _.' '._        " << endl;
+    cout << "        '::. .'     +  " << endl;
+    cout << "          ) (      +   " << endl;
+    cout << "   +    _.' '._        " << endl;
     cout << "       `\"\"\"\"\"\"\"`       " << endl;
 
     cout << "\n=============================================" << endl;
