@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Monster.h"
+#include "Entities/Monster/Monster.h"
 
 class MonsterBoss : public Monster
 {

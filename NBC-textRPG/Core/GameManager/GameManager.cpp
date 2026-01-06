@@ -2,9 +2,10 @@
 #include <iostream>
 #include <thread> // 딜레이 효과를 위해
 
-#include "BattleManager.h"
-#include "Character.h"
-#include "GameManager.h"
+#include "Core/GameManager/GameManager.h"
+#include "Entities/Character/Character.h"
+#include "Systems/BattleManager/BattleManager.h"
+#include "Systems/BattleManager/BattleTypes.h"
 
 using namespace std;
 
@@ -34,10 +35,13 @@ void GameManager::run()
     cin >> name;
     player = Character::getInstance(name); // 싱글톤
 
+    showPostBattleMenu();
+
     // 루프 시작
     while (!bIsGameOver)
     {
         system("cls");
+
         int currentLevel = player->getLevel();
 
         BattleReport report = battleMg->battle(*player);
@@ -51,6 +55,7 @@ void GameManager::run()
                 ending(report.monsterName);
                 break;
             }
+
             showPostBattleMenu();
         }
 
@@ -85,7 +90,8 @@ void GameManager::showPostBattleMenu()
 
     while (!bReadyForNextBattle)
     {
-        cout << "\n[정비 메뉴] 1.상점 방문  2.인벤토리 확인  3.다음 전투(나가기): ";
+        cout << "\n[정비 메뉴] 1.상점 방문  2.인벤토리 확인  3.스탯 확인  4.다음 전투 시작  9. 난이도 변경  0. 게임 "
+                "종료: ";
         int choice;
         cin >> choice;
 
@@ -99,8 +105,21 @@ void GameManager::showPostBattleMenu()
         }
         else if (choice == 3)
         {
+            player->displayStatus();
+        }
+        else if (choice == 4)
+        {
             cout << "전투 지역으로 이동합니다..." << endl;
             bReadyForNextBattle = true; // 메인 루프로!
+        }
+        else if (choice == 9)
+        {
+            battleMg->changeMode();
+        }
+        else if (choice == 0)
+        {
+            bIsGameOver = true;
+            break;
         }
         else
         {
@@ -111,20 +130,7 @@ void GameManager::showPostBattleMenu()
 
 void GameManager::displayInventory()
 {
-    cout << "\n=== [ 인벤토리 ] ===" << endl;
-    const auto& inventory = player->getInventory();
-    if (inventory.empty())
-    {
-        cout << "(비어있음)" << endl;
-    }
-    else
-    {
-        for (const auto& slot : inventory)
-        {
-            cout << "- " << slot.item->getName() << " x" << slot.quantity << endl; // 아이템 각각 몇개?
-        }
-    }
-    cout << "====================" << endl;
+    player->getInventory().display();
 }
 
 void GameManager::showDefeatSans()
@@ -194,9 +200,11 @@ void GameManager::ending(const string& bossName)
     cout << "\n[ Made by Team 3 ]" << endl;
     this_thread::sleep_for(chrono::seconds(1));
     cout << " - GameManager   : [김상민]" << endl;
+    cout << " - Logger        : [김상민 & 강두연]" << endl;
     cout << " - Battle System : [강두연]" << endl;
     cout << " - Character     : [성헌호 & 강두연]" << endl;
     cout << " - Monster       : [유주연 & 성헌호]" << endl;
+    cout << " - BossMonster   : [유주연 & 성헌호]" << endl;
     cout << " - Item          : [송승환]" << endl;
     cout << " - Shop          : [송승환]" << endl;
 

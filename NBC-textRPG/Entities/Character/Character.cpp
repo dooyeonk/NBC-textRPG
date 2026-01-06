@@ -1,11 +1,15 @@
-#include "Character.h"
 #include <algorithm>
+
+#include "Character.h"
+#include "Entities/Item/Item.h"
+#include "Systems/Inventory/Inventory.h"
+#include "Utils/Logger.h"
 
 Character* Character::instance = nullptr;
 
 Character::Character(std::string name, int healthPoint, int attackPower)
     : name(name), hp(healthPoint), maxHp(healthPoint), attackPower(attackPower), level(1), experience(0),
-      maxExperience(100), gold(0)
+      maxExperience(100), gold(0), tempAttackPower(0)
 {
 }
 
@@ -49,7 +53,6 @@ void Character::levelUp()
 {
     if (level >= 10)
     {
-        std::cout << "이미 최대 레벨입니다." << std::endl;
         return;
     }
     experience = 0;
@@ -58,7 +61,7 @@ void Character::levelUp()
     hp = maxHp; // 레벨업 시 체력 풀회복
     attackPower += 5;
 
-    std::cout << "=== LEVEL UP! 현재 레벨: " << level << " ===" << std::endl;
+    Logger::log(LogType::SYSTEM, "레벨업! 현재 레벨: {}", level);
 }
 
 void Character::addGold(int amount)
@@ -66,57 +69,42 @@ void Character::addGold(int amount)
     gold += amount;
 }
 
-void Character::addItem(Item* newItem)
+void Character::addItem(Item* item)
 {
-    if (!newItem)
-    {
-        return;
-    }
+    inventory.add(item);
+}
 
-    for (auto& slot : inventory)
-    {
-        if (slot.item->getName() == newItem->getName())
-        {
-            slot.quantity++;
-            std::cout << newItem->getName() << "의 수량이 증가했습니다." << std::endl;
-            return;
-        }
-    }
+void Character::addTempAttackPower(int amount)
+{
+    tempAttackPower += amount;
+}
 
-    inventory.push_back(InventoryItem(newItem));
+void Character::clearTempAttackPower()
+{
+    tempAttackPower = 0;
 }
 
 void Character::setHp(int hp)
 {
     // 0과 maxHp 사이로 값 제한
-    hp = std::max(0, std::min(hp, maxHp));
+    this->hp = std::max(0, std::min(hp, maxHp));
 }
 
 void Character::displayStatus() const
 {
-    std::cout << "\n----------------------------" << std::endl;
-    std::cout << "이름: " << name << " (Lv." << level << ")" << std::endl;
-    std::cout << "HP: " << hp << " / " << maxHp << std::endl;
-    std::cout << "공격력: " << attackPower << " | 골드: " << gold << std::endl;
-    std::cout << "----------------------------\n" << std::endl;
+    Logger::log(LogType::INFO, "\n========== [ 캐릭터 스탯 ] ==========\n");
+    Logger::log(LogType::INFO, "이름: {}", name);
+    Logger::log(LogType::INFO, "레벨: {}", level);
+    Logger::log(LogType::INFO, "HP: {} / {}", hp, maxHp);
+    Logger::log(LogType::INFO, "공격력: {}", attackPower);
+    Logger::log(LogType::INFO, "골드: {}G", gold);
+    Logger::log(LogType::INFO, "경험치: {} / {}", experience, maxExperience);
+    Logger::log(LogType::INFO, "\n=====================================\n");
 }
 
-void Character::reduceItem(const std::string& itemName)
+void Character::useRandomItem()
 {
-    for (auto iterator = inventory.begin(); iterator != inventory.end(); ++iterator)
-    {
-        if (iterator->item->getName() == itemName)
-        {
-
-            iterator->quantity--;
-            if (iterator->quantity <= 0)
-            {
-                delete iterator->item;
-                inventory.erase(iterator);
-            }
-            return;
-        }
-    }
+    inventory.useRandom(*this);
 }
 
 std::string Character::getName() const
@@ -154,7 +142,12 @@ int Character::getExperience() const
     return experience;
 }
 
-const std::vector<InventoryItem>& Character::getInventory() const
+const Inventory& Character::getInventory() const
 {
     return inventory;
+}
+
+int Character::getTotalAttackPower() const
+{
+    return attackPower + tempAttackPower;
 }
