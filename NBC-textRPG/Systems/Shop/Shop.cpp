@@ -1,10 +1,10 @@
+#include "Entities/Character/Character.h"
+#include "Entities/Item/Item.h"
 #include "Shop.h"
-#include "Item.h"
-#include "Character.h"
-#include <string>
-#include <vector>
 #include <algorithm>
 #include <iostream>
+#include <string>
+#include <vector>
 
 Shop::Shop()
 {
@@ -38,8 +38,7 @@ Item* Shop::buyItem(int itemIndex)
     return boughtItem;
 }
 
-
 Item* Shop::sellItem(int itemIndex)
 {
-    return 0;//추가 필요
+    return 0; // 추가 필요
 }
