@@ -32,11 +32,32 @@ void GameManager::run()
 {
     // 캐릭터 생성
     string name;
-    cout << "용사의 이름을 입력하세요: ";
-    cin >> name;
-    player = Character::getInstance(name); // 싱글톤
+    while (true)
+    {
+        cout << "수강생의 이름을 입력하세요: ";
+        getline(cin, name);
 
-    showPostBattleMenu();
+        // 앞뒤 공백 제거
+        name.erase(0, name.find_first_not_of(" ")); // 앞 공백 제거
+        name.erase(name.find_last_not_of(" ") + 1); // 뒤 공백 제거
+
+        // 유효성 검사
+        if (name.empty())
+        {
+            Logger::log(LogType::SYSTEM, "이름은 한 글자 이상 입력해야 합니다.");
+            continue;
+        }
+
+        // 3. (선택사항) 이름 길이 제한
+        if (name.length() > 10)
+        {
+            Logger::log(LogType::SYSTEM, "이름이 너무 깁니다. (최대 10자)");
+            continue;
+        }
+
+        break;
+    }
+    player = Character::getInstance(name); // 싱글톤
 
     // 루프 시작
     while (!bIsGameOver)
