@@ -6,6 +6,7 @@
 #include "Entities/Character/Character.h"
 #include "Systems/BattleManager/BattleManager.h"
 #include "Systems/BattleManager/BattleTypes.h"
+#include "Systems/Shop/Shop.h"
 #include "Utils/Logger.h"
 
 using namespace std;
@@ -98,11 +99,9 @@ void GameManager::visitShop(Character* player)
      * Enter 함수가 끝나면 다시 GameManager로 복귀
      */
 
-    /*
     Shop shop;
-    shop.Enter(Player);
+    shop.Enter(*player);
     cout << "상점을 나옵니다." << endl;
-    */
 }
 
 void GameManager::showPostBattleMenu()

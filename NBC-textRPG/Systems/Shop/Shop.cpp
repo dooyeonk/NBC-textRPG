@@ -1,44 +1,98 @@
 #include "Entities/Character/Character.h"
-#include "Entities/Item/Item.h"
+#include "Entities/Item/ItemManager.h"
 #include "Shop.h"
-#include <algorithm>
+#include "Utils/Logger.h"
 #include <iostream>
-#include <string>
-#include <vector>
 
-Shop::Shop()
-{
-}
-Shop::~Shop()
-{
-}
+using namespace std;
 
-void Shop::addItem(Item* item)
+void Shop::Enter(Character& character)
 {
-    items.push_back(item);
-}
-
-void Shop::showItem()
-{
-    for (size_t i = 0; i < items.size(); i++)
+    while (true)
     {
-        std::cout << i << ". " << items[i]->getName() << items[i]->getPrice() << "Gold" << std::endl;
+        system("cls");
+        Logger::log(LogType::INFO, "===== [ 상점 ] =====");
+        Logger::log(LogType::INFO, "현재 소지 골드: {}G", character.getGold());
+        cout << "\n1. 아이템 구매\n2. 아이템 판매\n0. 나가기\n선택: ";
+
+        int choice;
+        cin >> choice;
+
+        if (choice == 1)
+            displayBuyMenu(character);
+        else if (choice == 2)
+            displaySellMenu(character);
+        else if (choice == 0)
+            break;
     }
 }
 
-Item* Shop::buyItem(int itemIndex)
+void Shop::displayBuyMenu(Character& character)
 {
-    if (itemIndex < 0 || items.size() < itemIndex)
-    {
-        return nullptr;
-    }
-    Item* boughtItem = items[itemIndex];
-    items.erase(items.begin() + itemIndex);
+    system("cls");
+    auto items = ItemManager::getInstance().getAllPrototypes();
 
-    return boughtItem;
+    Logger::log(LogType::INFO, "===== [ 아이템 구매 ] =====");
+    for (int i = 0; i < items.size(); ++i)
+    {
+        cout << i + 1 << ". " << items[i]->getName() << " | " << items[i]->getPrice() << "G" << endl;
+    }
+    cout << "0. 뒤로가기\n구매할 아이템 번호: ";
+
+    int choice;
+    cin >> choice;
+
+    if (choice > 0 && choice <= items.size())
+    {
+        auto selected = items[choice - 1];
+        if (character.getGold() >= selected->getPrice())
+        {
+            character.spendGold(selected->getPrice());
+            character.addItem(selected);
+            Logger::log(LogType::ITEM, "{}을(를) 구매했습니다!", selected->getName());
+            system("pause");
+        }
+        else
+        {
+            Logger::log(LogType::SYSTEM, "골드가 부족합니다!");
+            system("pause");
+        }
+    }
 }
 
-Item* Shop::sellItem(int itemIndex)
+void Shop::displaySellMenu(Character& character)
 {
-    return 0; // 추가 필요
+    system("cls");
+    auto& inventory = character.getInventory();
+    auto slots = inventory.getSlots();
+
+    Logger::log(LogType::INFO, "===== [ 아이템 판매 (원가의 60%) ] =====");
+    if (slots.empty())
+    {
+        Logger::log(LogType::SYSTEM, "판매할 아이템이 없습니다.");
+        system("pause");
+        return;
+    }
+
+    for (int i = 0; i < slots.size(); ++i)
+    {
+        int sellPrice = static_cast<int>(slots[i].item->getPrice() * SELL_PRICE_RATIO);
+        cout << i + 1 << ". " << slots[i].item->getName() << " x" << slots[i].quantity << " | 판매가: " << sellPrice
+             << "G" << endl;
+    }
+    cout << "0. 뒤로가기\n판매할 아이템 번호: ";
+
+    int choice;
+    cin >> choice;
+
+    if (choice > 0 && choice <= slots.size())
+    {
+        auto selectedSlot = slots[choice - 1];
+        int sellPrice = static_cast<int>(selectedSlot.item->getPrice() * SELL_PRICE_RATIO);
+
+        character.addGold(sellPrice);
+        inventory.remove(selectedSlot.item);
+        Logger::log(LogType::SYSTEM, "{}을(를) 판매하여 {}G를 얻었습니다.", selectedSlot.item->getName(), sellPrice);
+        system("pause");
+    }
 }

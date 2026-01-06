@@ -25,6 +25,11 @@ public:
     Inventory() = default;
     ~Inventory();
 
+    const std::vector<InventorySlot>& getSlots() const
+    {
+        return slots;
+    }
+
     void add(std::shared_ptr<Item> newItem);
 
     void remove(std::shared_ptr<Item> targetItem);

@@ -143,7 +143,7 @@ int Character::getExperience() const
     return experience;
 }
 
-const Inventory& Character::getInventory() const
+Inventory& Character::getInventory()
 {
     return inventory;
 }
@@ -151,4 +151,19 @@ const Inventory& Character::getInventory() const
 int Character::getTotalAttackPower() const
 {
     return attackPower + tempAttackPower;
+}
+
+int Character::getGold() const
+{
+    return gold;
+}
+
+void Character::spendGold(int amount)
+{
+    if (amount > gold)
+    {
+        Logger::log(LogType::SYSTEM, "골드가 부족합니다.");
+        return;
+    }
+    gold -= amount;
 }
