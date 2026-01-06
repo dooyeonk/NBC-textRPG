@@ -58,9 +58,9 @@ void Character::levelUp()
     }
     experience = 0;
     level++;
-    maxHp += 20;
+    maxHp += level * 20;
     hp = maxHp; // 레벨업 시 체력 풀회복
-    attackPower += 5;
+    attackPower += level * 5;
 
     Logger::log(LogType::SYSTEM, "레벨업! 현재 레벨: {}", level);
 }
